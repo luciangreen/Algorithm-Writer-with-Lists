@@ -40,7 +40,7 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 ```
 * Enter `algwriter(Algorithm),writeln1(Algorithm).`
 
-# Installing and Grammar and Logic to Algorithm
+# Installing and Running Grammar and Logic to Algorithm
 
 * Download this repository.
 * In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
