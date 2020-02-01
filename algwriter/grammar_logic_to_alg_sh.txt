@@ -1,0 +1,9 @@
+%% grammar_logic_to_alg.sh
+
+swipl -G100g -T20g -L2g
+[grammar_logic_to_alg].
+leash(-all),visible(+all),protocol("./gla.txt").
+grammar_logic_to_alg1.
+noprotocol.
+halt.
+
