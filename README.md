@@ -1,6 +1,6 @@
 # Algorithm Writer with Lists
 
-Generates random algorithms in List Prolog, which has can be converted to a simple form similar to Prolog.
+Generates random algorithms in List Prolog, which can be converted to a simple form similar to Prolog.
 
 * algwriter-lists-mr.pl - generates algorithms with combinations of other algorithms with vague mind reading
 * algwriter-lists-random.pl - generates algorithms with combinations of other algorithms at random
