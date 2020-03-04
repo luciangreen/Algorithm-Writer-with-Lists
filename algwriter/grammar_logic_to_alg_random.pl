@@ -126,7 +126,7 @@ generate_sentences(Sentence3,Sentence_a1,Sentence_a2,N1) :-
 %%[c,d]
 
 generate_sentence(Item,Sentence) :-
-	random_member(Grammar1,[[n,v,n],[n,v,a,n],[v,n],[v,a,n]]),
+	random_member(Grammar1,[[n,v,n,n,v,a,n,v,n,v,a,n],[n,v,n],[n,v,a,n],[v,n],[v,a,n]]),
 	brdict_pos(BrDict012),
 	find_pos(Item,POS,BrDict012),
 	substitute1(Item,POS,Grammar1,[],Grammar2),
