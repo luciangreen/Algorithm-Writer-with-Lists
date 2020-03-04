@@ -5,6 +5,8 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * algwriter-lists-mr.pl - generates algorithms with combinations of other algorithms with vague mind reading
 * algwriter-lists-random.pl - generates algorithms with combinations of other algorithms at random
 * grammar_logic_to_alg.pl - takes text, randomly generates details and appropriate algorithms for A (agreement), B (disagreement) and solution to B based on approximate parts of speech and the Text to Breasonings dictionary.
+* grammar_logic_to_alg_random.pl - like the previous algorithm but randomly selects up to 10 sentences from the file to process.
+* random_dependencies.pl - generates random (meaningless) algorithm specifications.
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about Algorithm Writer with Lists.
 
@@ -50,6 +52,33 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 * Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the code, NOT the algwriter folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
+
+# Installing and Running Grammar and Logic to Algorithm at Random
+
+* Download this repository.
+* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+```
+['grammar_logic_to_alg_random.pl'].
+```
+* As stated above, rather than processing the whole file, this algorithm processes up to 10 random sentences.
+* Enter many sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the code, NOT the algwriter folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
+
+* Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
+
+# Installing and Running Random Dependencies
+
+* Download this repository.
+* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+```
+['random_dependencies.pl'].
+```
+* As stated above, the value of this algorithm's input is found by mentally inserting not and transformations.
+
+* Enter `random_dependencies(A),writeln1(A).`
+
+```
+[substring,[[duplicates,[[]]],[findall,[[add_number_to_list,[[split_into_sentences,[[sort,[[list_head,[[reverse,[[findall,[[string_to_list,[[or,[[and,[[delete,[[map,[[]]]]],[]]]]]]]]]]]]],[map,[[length,[[maximum,[[length,[[reverse,[[split_into_sentences,[[member,[[map,[[]]]]]]],[]]]]]]],[delete,[[get_item_n,[[],[and,[[]]]]],[reverse,[[]]]]]]],[]]]]]]]]]]]]]
+```
 
 # Authors
 
