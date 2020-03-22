@@ -19,7 +19,7 @@ wrap(A,B) :- B=[A].
 
 algwriter(Na) :- 
 %%notrace,
-	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
+	phrase_from_file_s(string(BrDict0), "../Text-to-Breasonings/brdict1.txt"),
 	%%SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
 	splitfurther(BrDict0,BrDict01),
 	%%trace,

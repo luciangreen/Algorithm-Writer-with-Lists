@@ -49,7 +49,7 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 ```
 ['grammar_logic_to_alg.pl'].
 ```
-* Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Algorithm-Writer-with-Lists"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
+* Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Text-to-Breasonings"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
 

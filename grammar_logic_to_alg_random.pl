@@ -4,7 +4,7 @@ grammar_logic_to_alg_without_brdict.pl
 
 **/
 
-:-include('../Text-to-Breasonings/la_strings').
+:-include('../listprologinterpreter/la_strings').
 :-include('../Text-to-Breasonings/texttobrall2').
 :-include('../Text-to-Breasonings/texttobr2qb').
 
@@ -14,10 +14,10 @@ grammar_logic_to_alg_without_brdict.pl
 %% given N sentences to generate, takes a sentence and M sentences to find substitution words from
 
 grammar_logic_to_alg1 :-
-	phrase_from_file_s(string(Text1), "../file.txt"),
+	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
 
 
-	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
+	phrase_from_file_s(string(BrDict0), "../Text-to-Breasonings/brdict1.txt"),
 	splitfurther(BrDict0,BrDict01),
 	sort(BrDict01,BrDict012),
 	retractall(brdict_pos(_)),
