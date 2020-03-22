@@ -44,293 +44,152 @@ later: can randomly generate details like given sentence
 :-include('../Text-to-Breasonings/texttobrall2').
 :-include('../Text-to-Breasonings/texttobr2qb').
 
-multiply(A,B,C) :- 
-C is A*B. 
+:- dynamic brdict/1.
 
-subtract(A,B,C) :- 
-C is A-B. 
+grammar_logic_to_alg1 :-
+	phrase_from_file_s(string(Text1), "../file.txt"),
 
-head(A,B) :- A=[B|_].
-
-tail(A,B) :- A=[_|B].
-
-wrap(A,B) :- B=[A].
-
-algwriter(Na) :- 
-%%notrace,
 	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
-	%%SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
 	splitfurther(BrDict0,BrDict01),
-	%%trace,
-	sort(BrDict01,BrDict02),
-makerandomlist(BrDict02,5,[],R0),makerandomlist(R0,3,[],R1),makerandomlist(R0,3,[],R2),wrap(R1,Nb1),wrap(R2,Nb2),append(Nb1,Nb2,Nb3),trialy2A([3,4,5,6,7,8],NFns),randomfns(NFns,Nb3,Na),!.
-makerandomlist(_,0,A,A).
-makerandomlist(List,A,C1,C) :- 
-not((=(A,0))),trialy2A(List,N1),%%random(R),multiply(R,L,R1),ceiling(R1,N1),
-wrap(N1,N2),append(C1,N2,Nb3),subtract(A,1,D),makerandomlist(List,D,Nb3,C).
-randomfns(1,B,Nb3):-randomlist(B,Na1),randomlist(B,Na2),randomfn(Na1,Na2,Nb),wrap(Nb,Nb2),append(B,Nb2,Nb3).%%write1(".").
-randomfns(A,B,C) :- not((=(A,1))),randomlist(B,Na1),randomlist(B,Na2),randomfn(Na1,Na2,Nb),wrap(Nb,Nb2),append(B,Nb2,Nb3),%%tail(B,T),
-	subtract(A,1,D),write(,),
-	randomfns(D,Nb3,C).
-randomlist(B,Na) :- %%List1=[1,2,3,4,5,6,7,9,10],
-length(B,L),length(C,L),append(C,_,B),trialy2A(C,Na).%%,random(R),length(B,Bl),multiply(R,Bl,N),ceiling(N,N1),getitemn(N1,B,Na).
-getitemn(0,_A,[]).
-getitemn(1,B,C) :- head(B,C).
-getitemn(A,B,C) :- not((=(A,1))),tail(B,T),subtract(A,1,D),getitemn(D,T,C).
-randomfn(A1,A2,B) :- %%repeat,
-trialy2A([1,3,4,5,7],N1),%%random(R),multiply(R,8,N),ceiling(N,N1),
-fna(N1,A1,A2,B).
-fna(1,A1,_A2,B) :- reverse(A1,[],B),writeln1([[n,reverse],[A1,[],B]]),term_to_atom(A1,A11),term_to_atom(B,B1),concat_list(["I reversed ",A11,", giving ",B1,"."],C),writeln1(C).
-%%fna(2,A1,_A2,B) :- sort0(A1,B),write1(sort0(A1,B)).
-fna(3,A1,A2,B) :- append1(A1,A2,B),writeln1([[n,append1],[A1,A2,B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I appended ",A11," to ",A21,", giving ",B1,"."],C),writeln1(C).
-fna(4,A1,A2,B) :- minus1(A1,A2,B),writeln1([[n,minus1],[A1,A2,B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I subtracted ",A21," from ",A11,", giving ",B1,"."],C),writeln1(C).
-fna(5,A1,A2,B) :- intersection1(A1,A2,[],B),writeln1([[n,intersection1],[A1,A2,[],B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I found the intersection of ",A11," and ",A21,", ",B1,"."],C),writeln1(C).
-%%fna(6,A1,A2,A2) :- mutually_exclusive(A1,A2),write1([[n,mutually_exclusive],[A1,A2]]).
-fna(7,A1,A2,B) :- duplicates(A1,A2,[],B),writeln1([[n,duplicates],[A1,A2,[],B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I found the duplicates in ",A11," and ",A21,", ",B1,"."],C),writeln1(C).
-%%fna(8,A1,A2,A1) :- substring(A1,A2),write1([[n,substring],[A1,A2]]).
-reverse([],L,L).
-reverse(L,M,N) :- head(L,H),tail(L,T),wrap(H,H1),append(H1,M,O),reverse(T,O,N).
-sort0(L,N) :- sort1(L,[],N).
-sort1([],L,L).
-sort1(L,M1,N) :- not((=(L,[]))),head(L,H),tail(L,T),maximum(T,H,M2,[],R),wrap(M2,M3),append(M1,M3,M4),sort1(R,M4,N).
-maximum([],L,L,R,R).
-maximum(L,M1,N,R1,R2) :- not((=(L,[]))),head(L,H),tail(L,T),(>=(M1,H)->(=(M2,M1),wrap(H,H2),append(R1,H2,R3));(=(M2,H),wrap(M1,M12),append(R1,M12,R3))),maximum(T,M2,N,R3,R2).
-map(_F,[],L,L).
-map(F,L,M1,N) :- not((=(L,[]))),head(L,H),tail(L,T),functor(A,F,3),arg(1,A,M1),arg(2,A,H),arg(3,A,M2),A,map(F,T,M2,N).
-findall(_F,[],L,L).
-findall(F,L,M1,N) :- not((=(L,[]))),head(L,H),tail(L,T),functor(A,F,2),arg(1,A,H),arg(2,A,M2),(A->((wrap(M2,M3),append(M1,M3,M4)));(=(M1,M4))),findall(F,T,M4,N).
-intersection1([],_A,L,L).
-intersection1(L1,L2,L3a,L3) :- head(L1,I1),tail(L1,L4),intersection2(I1,L2,[],L5),append(L3a,L5,L6),intersection1(L4,L2,L6,L3).
-intersection2(_A,[],L,L).
-intersection2(I1,L1,L2,L3) :- head(L1,I1),tail(L1,L4),wrap(I1,I11),append(L2,I11,L5),intersection2(I1,L4,L5,L3).
-intersection2(I1,L1,L2,L3) :- head(L1,I2),tail(L1,L4),not((=(I1,I2))),intersection2(I1,L4,L2,L3).
-append1(B,C,A) :- append(B,C,A).
-minus1(L,[],L).
-minus1(L1,L2,L3) :- head(L2,I1),tail(L2,L5),delete2(L1,I1,[],L6),minus1(L6,L5,L3).
-delete2([],_A,L,L).
-delete2(L1,I1,L2,L3) :- head(L1,I1),tail(L1,L5),delete2(L5,I1,L2,L3).
-delete2(L1,I1,L2,L3) :- head(L1,I2),tail(L1,L5),not((=(I1,I2))),wrap(I2,I21),append(L2,I21,L6),delete2(L5,I1,L6,L3).
+	sort(BrDict01,BrDict012),
+	retractall(brdict(_)),
+	assertz(brdict(BrDict012)),
 
-mutually_exclusive([],_L):-!.
-mutually_exclusive(L,M):-head(L,H),tail(L,T),membera3(M,H),mutually_exclusive(T,M),!.
-membera3([],_L):-!.
-membera3(L,M):-head(L,H),tail(L,T),not((=(M,H))),membera3(T,M),!.
-
-duplicates([],_L,S,S).
-duplicates(L,M,S1,S2):-head(L,H),tail(L,T),member(H,M),(deletea2(M,H,M1)->(true);(=(M,M1))),wrap(H,H1),append(S1,H1,S3),duplicates(T,M1,S3,S2),!.
-duplicates(L,M,S1,S2):-head(L,H),tail(L,T),not((membera4(M,H))),duplicates(T,M,S1,S2).
-deletea2([],_L,_M1):-fail.
-deletea2(L,M,T):-head(L,H),tail(L,T),=(M,H).
-deletea2(L,M,M1):-head(L,H),tail(L,T),not((=(M,H))),deletea2(T,M,M1).
-membera4([],_L):-fail.
-membera4(L,H):-head(L,H).
-membera4(L,M):-head(L,H),tail(L,T),not(M=H),membera4(T,M).
-
-substring([],[]).
-substring([],B):-not((=(B,[]))),fail.
-substring(A,B):-tail(A,At),(listhead(A,B)->(true);(substring(At,B))).
-listhead(_L,[]).
-listhead(A,B):-head(A,Ah),tail(A,At),head(B,Ah),tail(B,Bt),listhead(At,Bt).
-
-
-%%%%%%%%%%%%
-
-%%findbest(R,R) :-!.
-findbest2(R,Item):-
-	sort(R,RA),
-	reverse(RA,RB),
-	RB=[[_,Item]|_Rest].
-
-
-%%trialy2A([],R) :-
-%%	R=[[_,'A']].
-%%trialy2A(List,R) :-
-%%	random_member(A,List),
-%%	R=[[_,A]].
-
-trialy2A([],R) :-
-	R=[].
-trialy2A(List,R) :-
-	random_member(R,List).
-	%%R=[[_,A]].
-
-%%trialy2A(List,R) :-
-%%	notrace,trialy2B(List,R).%%,trace.
-trialy2B(List,R) :-
-	length(List,Length),
-	((Length=<9->
-		findr4(R4),
-		number_string(R4,R4A),
-		formr5([R4A],9,Length,R5),
-		findr(R5,List,R));
-	(Length=<99->
-		findr4(R41),
-		findr4(R42),
-		formr5([R41,R42],99,Length,R5),
-		findr(R5,List,R));
-	(Length=<999->
-		findr4(R41),
-		findr4(R42),
-		findr4(R43),
-		formr5([R41,R42,R43],999,Length,R5),
-		findr(R5,List,R));
-	(Length=<9999->
-		findr4(R41),
-		findr4(R42),
-		findr4(R43),
-		findr4(R44),
-		formr5([R41,R42,R43,R44],9999,Length,R5),
-		findr(R5,List,R));
-	(Length=<99999->
-		findr4(R41),
-		findr4(R42),
-		findr4(R43),
-		findr4(R44),
-		findr4(R45),
-		formr5([R41,R42,R43,R44,R45],99999,Length,R5),
-		findr(R5,List,R));
-	fail),
-	%%write1([r,R]),trace.
-	true.
-
-findr4(R4) :-
-		List1=[0,1,2,3,4,5,6,7,8,9],
-		Trials is 30,
-		trialy22(List1,Trials,[],R1),
-		findbest2(R1,R4).
-		%%number_string(R3,R2),
-formr5(RList,Upper,Length,R5) :-
-		%%findall(D,(member(C,RList),floor(C,D)),RList2),
-		concat_list2A(RList,R5A),
-		number_string(R5B,R5A),
-		R51 is floor((R5B/Upper)*Length),
-		(R5B=Upper->R5 is R51-1;R5=R51).
-findr(R4,List,R) :-
-		%%floor(R4,R4A),		
-		length(A,R4),
-		append(A,[R|_],List).
-
-	%%random_member(A,List),
-	%%R=[[_,A]].
+	SepandPad=".\n",
+	split_string(Text1,SepandPad,SepandPad,Text2a),
+	delete(Text2a,"",Text2),
 	
-	/**
-	length(List,L),
-	Trials is L*3,
-	trialy22(List,Trials,[],R).**/
-
-trialy22([],_,R,R) :- !.
-trialy22(List,Trials,RA,RB) :-
-	List=[Item|Items],
-	trialy21(Item,Trials,R1),
-	append(RA,[R1],RC),
-	trialy22(Items,Trials,RC,RB),!.
-
-trialy21(Label,Trials,RA) :-
-	trialy3(Trials,[],R),
-	aggregate_all(count, member(true,R), Count),
-	RA=[Count,Label].
-
-trialy3(0,R,R) :-!.
-trialy3(Trials1,RA,RB) :-
-	trialy1(R1),
-	append(RA,[R1],RC),
-	Trials2 is Trials1-1,
-	trialy3(Trials2,RC,RB),!.
+	findall(B2,(member(B1,Text2),grammar_logic_to_alg(B1,B2)),C),
+	length(C,CLength),
+	writeln([CLength,sentences]),
 	
-%% try other nouns
-trialy1(R1) :-
-	%%control11(A1),
-	%%repeat,
-	trial0(A22), %% Control
-	sum(A22,0,S22),
-	mean(S22,A1),
-	%%repeat,
-	trial0(A21), %% Test 1
-	sum(A21,0,S02),
-	mean(S02,A2),
-	(A1>A2->R1=true;R1=fail).
+	C=[[[_,Sentence1,a_alg(List_a),_,bb_alg(List_bb)]|Cs1]|Cs2],
+		%%get_time(TS),stamp_date_time(TS,date(Year,Month,Day,Hour1,Minute1,Seconda,_A,_TZ,_False),local),
+	concat_list(["gla_del"],%%[Year,Month,Day,Hour1,Minute1,Seconda],
+	File1),
+	concat_list(["\"",File1,".txt\""],File2),
 
-trial0(S3) :- N is 10, trial1(N,[],S),trial01(S,S3).
-trial01(S1,S3) :-
-	sort(S1,S),
-	%%midpoint(S,MP),
-	halves(S,H1,H2),
-	midpoint(H1,Q1),
-	midpoint(H2,Q3),
-	IQR is Q3-Q1,
-	sum(S,0,S02),
-	mean(S02,Mean),
-	furthestfrommean(S,Mean,V),
-	D1 is 1.5*IQR,
-	D2 is V-Mean,
-	(D2>D1->(delete(S,V,S2),trial01(S2,S3));S=S3).
+	term_to_atom(List_a,List_a2),
+	string_atom(List_a3,List_a2),
 	
-%%trial1(0,[],_A) :- fail,!.
-trial1(0,A,A) :- !.
-trial1(N,A,B) :- mindreadtest(S), append(A,[S],A2),
-	N1 is N-1,trial1(N1,A2,B).
+	concat_list(["swipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_a3,"]],[[[n,function],[[v,a]],\":-\",[[[n,length],[[v,a],0,1]]]],[[n,function],[[v,a]],\":-\",[[[n,head],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,e],[v,f]]]],[[n,reverse],[[v,a],[],[v,a1]]],[[n,head],[[v,a1],[v,d1]]],[[n,equals1],[[v,d1],[[v,e1],[v,f1]]]],[[n,function2],[[v,a],[v,f],[v,f1]]]]],[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],\":-\",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]],[[n,function2],[[v,a],[v,b],[v,f]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]]]],[[n,function2],[[v,a],[v,b],[v,c]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]],[[n,function2],[[v,d],[v,f],[v,c]]]]],[[n,length],[[],[v,l],[v,l]]],[[n,length],[[v,l],[v,m1],[v,n]],\":-\",[[[n,not],[[[n,=],[[v,l],[]]]]],[[n,tail],[[v,l],[v,t]]],[[n,+],[[v,m1],1,[v,m2]]],[[n,length],[[v,t],[v,m2],[v,n]]]]]],[[]]),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_a1),
+	writeln1([*,Sentence1,a_alg(List_a)]),
+	writeln(List_a1),
+
+	concat_list(["\n\nswipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_a3,",[v,b]]],[[[n,function],[[v,a],[v,b]],\":-\",[[[n,tail],[[v,a],[v,b]]]]]],_),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_b1),
+	writeln1([*,Sentence1,b_alg(List_a)]),
+	writeln(List_b1),
+
+	term_to_atom(List_bb,List_bb2),
+	string_atom(List_bb3,List_bb2),
+
+	concat_list(["swipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_bb3,"]],[[[n,function],[[v,a]],\":-\",[[[n,length],[[v,a],0,1]]]],[[n,function],[[v,a]],\":-\",[[[n,head],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,e],[v,f]]]],[[n,reverse],[[v,a],[],[v,a1]]],[[n,head],[[v,a1],[v,d1]]],[[n,equals1],[[v,d1],[[v,e1],[v,f1]]]],[[n,function2],[[v,a],[v,f],[v,f1]]]]],[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],\":-\",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]],[[n,function2],[[v,a],[v,b],[v,f]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]]]],[[n,function2],[[v,a],[v,b],[v,c]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]],[[n,function2],[[v,d],[v,f],[v,c]]]]],[[n,length],[[],[v,l],[v,l]]],[[n,length],[[v,l],[v,m1],[v,n]],\":-\",[[[n,not],[[[n,=],[[v,l],[]]]]],[[n,tail],[[v,l],[v,t]]],[[n,+],[[v,m1],1,[v,m2]]],[[n,length],[[v,t],[v,m2],[v,n]]]]]],[[]]),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_bb1),
+	writeln1([*,Sentence1,bb_alg(List_bb)]),
+	writeln(List_bb1),
+
+	writeln1(Cs1),
+	writeln1(Cs2).
+
+grammar_logic_to_alg(Sentence1,B) :- %% Not by multi-sentence algorithms, just by sentence
+	atom_string(Sentence0,Sentence1),
+	downcase_atom(Sentence0,Sentence01),
+	atom_string(Sentence01,Sentence02),
+	SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
+	Connectors=
+		["the","a","i","on","with","of","an","for","to",
+		"was","were","and","in","my","from","out","by"],
+	split_string(Sentence02,SepandPad,SepandPad,Sentence2),
+	subtract(Sentence2,Connectors,Sentence3),
+	%%length(Sentence3,Length),
 	
-%%midpoint([],0) :- !.
-
-midpoint(S,MP) :-
-%%	not(S=[]),
-	length(S,L),
-	A is mod(L,2),
-	(A is 0->
-		(M1 is L/2, M2 is M1+1,N1 is M1-1,N2 is M2-1,length(N11,N1),length(N21,N2),append(N11,[N12|_Rest1],S),append(N21,[N22|_Rest2],S),MP is (N12+N22)/2)
-	;
-		(L2 is L+1, M1 is L2/2, N1 is M1-1,length(N11,N1),append(N11,[MP|_Rest],S))).
-
-halves(S,H1,H2) :-
-	length(S,L),
-	A is mod(L,2),
-	(A is 0->
-		(M1 is L/2,length(H1,M1),append(H1,H2,S))
-	;
-		(L2 is L-1,M1 is L2/2,length(H1,M1),append(H1,[_|H2],S))).
-
-sum([],S,S):-!.
-sum(S0,S1,S2) :-
-	S0=[S3|S4],
-	S5 is S1+S3,
-	sum(S4,S5,S2).
+	%% () add generated data
+	%%write_commands(Length,[],Commands), %% sentence alg
 	
-mean(Sum,Mean) :-
-	Mean is Sum/2.
+	generate_sentences(Sentence3,[],Sentence_a,30), %% detail 	sentences
+	append(Sentence3,Sentence_a,Sentence4),
+	findall([*,Sentence1,a_alg(Sentence5),b_alg(Sentence5,a),bb_alg(Sentence6)],(member(Sentence4a,Sentence4),make_lists(Sentence4a,[],Sentence5),Sentence5=[_|Sentence6]),B),!.
+	  %% detail algs
+	
+generate_sentences(_Sentence3,Sentence_a,Sentence_a,0) :- !.
+generate_sentences(Sentence3,Sentence_a1,Sentence_a2,N1) :-
+	random_member(Item,Sentence3),
+	generate_sentence(Item,Sentence_a3),
+	append(Sentence_a1,[Sentence_a3],Sentence_a4),
+	N2 is N1-1,
+	generate_sentences(Sentence3,Sentence_a4,Sentence_a2,N2).
 
-furthestfrommean(S,Mean,V) :-
-	absdiffmean(S,Mean,[],D),
-	sort(D,D1),
-	reverse(D1,[[_,V]|_Rest]).
+%%write_commands(0,Commands,Commands) :- !.
+%%write_commands(Length1,Commands1,Commands2) :-
+%%	Length2 is Length1-1.
+%%	append(Commands1,[[[n,member2],[[v,Length1],[v,Length2]]]).
+	%%[[n,equals1],[[v,Length2],[[v,a***],[v,b]]]]].
 
-absdiffmean([],_M,D,D) :- !.
-absdiffmean(S,M,D1,D2) :-
-	S=[S1|S2],
-	S3 is abs(S1-M),
-	append(D1,[[S3,S1]],D3),
-	absdiffmean(S2,M,D3,D2).
+%%[a,b]
+%%[c,d]
 
-mindreadtest(Sec) :-
-	%% 250 br for characters to be br out with 10 br each from person to me - do when initial 250 br test done and doing 10 br test
-	%%comment(fiftyastest),
-	%%random(X),X1 is 10*X, X2 is floor(X1), (X2=<2 -> (
-	%%texttobr,write1(['true test']), %%); %% use breasonings breasoned out by computer for not by me, for job medicine for "me", at last time point
-	%%true), %% leave last time point blank
-	%%**texttobr2(640);true),%% make an A to detect reaction to gracious giving or blame of in following
-	get_time(TimeStamp1),
-	%%phrase_from_file(string(_String), 'file.txt'),
-	texttobr2(2), %% 100 As for answer (must be br before this on same day)
-	%% is gracious giving or blame
-	get_time(TimeStamp2),
-	%%comment(turnoffas),
-   Sec is TimeStamp2 - TimeStamp1.
-   
-concat_list2A(A1,B):-
-	A1=[A|List],
-	concat_list2A(A,List,B),!.
+generate_sentence(Item,Sentence) :-
+	random_member(Grammar1,[[n,v,n],[n,v,a,n],[v,n],[v,a,n]]),
+	brdict(BrDict012),
+	find_pos(Item,POS,BrDict012),
+	substitute1(Item,POS,Grammar1,[],Grammar2),
+	substitute2(Grammar2,BrDict012,[],Sentence).
 
-concat_list2A(A,[],A):-!.
-concat_list2A(A,List,B) :-
-	List=[Item|Items],
-	string_concat(A,Item,C),
-	concat_list2A(C,Items,B).
+find_pos(Item,POS2,BrDict012) :-
+	member([Item,POS1],BrDict012),
+	POS1="right",
+	POS2=v,!.
+find_pos(Item,POS2,BrDict012) :-
+	member([Item,POS1],BrDict012),
+	POS1="plus",
+	POS2=a,!.
+find_pos(_Item,POS2,_BrDict012) :-
+	POS2=n.
+
+substitute1(_Item,_POS,[],Grammar,Grammar) :- !.
+substitute1(Item,POS,Grammar1,Grammar2,Grammar3) :-
+	Grammar1=[Grammar4|Grammar5],
+	Grammar4=POS,
+	append_list([Grammar2,Item],Grammar6),
+	append(Grammar6,Grammar5,Grammar3),!.
+substitute1(Item,POS,Grammar1,Grammar2,Grammar3) :-
+	Grammar1=[Grammar4|Grammar5],
+	not(Grammar4=POS),
+	append_list([Grammar2,Grammar4],Grammar6),
+	substitute1(Item,POS,Grammar5,Grammar6,Grammar3),!.
+
+substitute2([],_BrDict012,Sentence,Sentence) :- !.
+substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
+	Grammar1=[Grammar2|Grammar3],
+	Grammar2=n,
+	findall(A,(member([A,"box"],BrDict012)),B),
+	random_member(Word,B),
+	append(Sentence1,[Word],Sentence3),
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
+substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
+	Grammar1=[Grammar2|Grammar3],
+	Grammar2=v,
+	findall(A,(member([A,"right"],BrDict012)),B),
+	random_member(Word,B),
+	append(Sentence1,[Word],Sentence3),
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
+substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
+	Grammar1=[Grammar2|Grammar3],
+	Grammar2=a,
+	findall(A,(member([A,"plus"],BrDict012)),B),
+	random_member(Word,B),
+	append(Sentence1,[Word],Sentence3),
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
+substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
+	Grammar1=[Grammar2|Grammar3],
+	append(Sentence1,[Grammar2],Sentence3),
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
+
+make_lists(Sentence1,Sentence,Sentence) :-
+	Sentence1=[_Sentence2],
+	!.	
+make_lists(Sentence1,Sentence2,Sentence3) :-
+	Sentence1=[Sentence4|Sentence5],
+	Sentence5=[Sentence6|_Sentence7],
+	append(Sentence2,[[Sentence4,Sentence6]],Sentence8),
+	make_lists(Sentence5,Sentence8,Sentence3).
+
