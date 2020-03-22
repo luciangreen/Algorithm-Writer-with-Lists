@@ -40,7 +40,7 @@ later: can randomly generate details like given sentence
 
 **/
 
-:-include('../Text-to-Breasonings/la_strings').
+:-include('../listprologinterpreter/la_strings').
 :-include('../Text-to-Breasonings/texttobrall2').
 :-include('../Text-to-Breasonings/texttobr2qb').
 

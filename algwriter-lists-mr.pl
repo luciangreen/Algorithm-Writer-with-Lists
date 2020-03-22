@@ -3,7 +3,7 @@
 
 :-include('../Text-to-Breasonings/texttobrall2').
 :-include('../Text-to-Breasonings/texttobr2qb').
-:-include('../Text-to-Breasonings/la_strings').
+:-include('../listprologinterpreter/la_strings').
 
 multiply(A,B,C) :- 
 C is A*B. 
