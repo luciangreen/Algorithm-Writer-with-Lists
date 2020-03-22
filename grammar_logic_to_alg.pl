@@ -47,9 +47,9 @@ later: can randomly generate details like given sentence
 :- dynamic brdict/1.
 
 grammar_logic_to_alg1 :-
-	phrase_from_file_s(string(Text1), "../file.txt"),
+	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
 
-	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
+	phrase_from_file_s(string(BrDict0), "../Text-to-Breasonings/brdict1.txt"),
 	splitfurther(BrDict0,BrDict01),
 	sort(BrDict01,BrDict012),
 	retractall(brdict(_)),
