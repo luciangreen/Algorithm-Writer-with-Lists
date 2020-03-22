@@ -1,9 +1,9 @@
 %% algwriter(A),write1(A).
 %% write data,fns in exec format
 
-:-include('../texttobrall2').
-:-include('../texttobr2qb').
-:-include('../la_strings').
+:-include('../Text-to-Breasonings/texttobrall2').
+:-include('../Text-to-Breasonings/texttobr2qb').
+:-include('../Text-to-Breasonings/la_strings').
 
 multiply(A,B,C) :- 
 C is A*B. 
@@ -18,7 +18,7 @@ tail(A,B) :- A=[_|B].
 wrap(A,B) :- B=[A].
 
 algwriter(Na) :- 
-%%notrace,
+notrace,
 	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
 	%%SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
 	splitfurther(BrDict0,BrDict01),
@@ -38,16 +38,15 @@ length(B,L),length(C,L),append(C,_,B),trialy2A(C,Na).%%,random(R),length(B,Bl),m
 getitemn(0,_A,[]).
 getitemn(1,B,C) :- head(B,C).
 getitemn(A,B,C) :- not((=(A,1))),tail(B,T),subtract(A,1,D),getitemn(D,T,C).
-randomfn(A1,A2,B) :- %%repeat,
-trialy2A([1,3,4,5,7],N1),%%random(R),multiply(R,8,N),ceiling(N,N1),
+randomfn(A1,A2,B) :- repeat,trialy2A([1,3,4,5,7],N1),%%random(R),multiply(R,8,N),ceiling(N,N1),
 fna(N1,A1,A2,B).
-fna(1,A1,_A2,B) :- reverse(A1,[],B),writeln1([[n,reverse],[A1,[],B]]),term_to_atom(A1,A11),term_to_atom(B,B1),concat_list(["I reversed ",A11,", giving ",B1,"."],C),writeln1(C).
+fna(1,A1,_A2,B) :- reverse(A1,[],B),write1([[n,reverse],[A1,[],B]]).
 %%fna(2,A1,_A2,B) :- sort0(A1,B),write1(sort0(A1,B)).
-fna(3,A1,A2,B) :- append1(A1,A2,B),writeln1([[n,append1],[A1,A2,B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I appended ",A11," to ",A21,", giving ",B1,"."],C),writeln1(C).
-fna(4,A1,A2,B) :- minus1(A1,A2,B),writeln1([[n,minus1],[A1,A2,B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I subtracted ",A21," from ",A11,", giving ",B1,"."],C),writeln1(C).
-fna(5,A1,A2,B) :- intersection1(A1,A2,[],B),writeln1([[n,intersection1],[A1,A2,[],B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I found the intersection of ",A11," and ",A21,", ",B1,"."],C),writeln1(C).
+fna(3,A1,A2,B) :- append1(A1,A2,B),write1([[n,append1],[A1,A2,B]]).
+fna(4,A1,A2,B) :- minus1(A1,A2,B),write1([[n,minus1],[A1,A2,B]]).
+fna(5,A1,A2,B) :- intersection1(A1,A2,[],B),write1([[n,intersection1],[A1,A2,[],B]]).
 %%fna(6,A1,A2,A2) :- mutually_exclusive(A1,A2),write1([[n,mutually_exclusive],[A1,A2]]).
-fna(7,A1,A2,B) :- duplicates(A1,A2,[],B),writeln1([[n,duplicates],[A1,A2,[],B]]),term_to_atom(A1,A11),term_to_atom(A2,A21),term_to_atom(B,B1),concat_list(["I found the duplicates in ",A11," and ",A21,", ",B1,"."],C),writeln1(C).
+fna(7,A1,A2,B) :- duplicates(A1,A2,[],B),write1([[n,duplicates],[A1,A2,[],B]]).
 %%fna(8,A1,A2,A1) :- substring(A1,A2),write1([[n,substring],[A1,A2]]).
 reverse([],L,L).
 reverse(L,M,N) :- head(L,H),tail(L,T),wrap(H,H1),append(H1,M,O),reverse(T,O,N).
@@ -102,21 +101,10 @@ findbest2(R,Item):-
 	reverse(RA,RB),
 	RB=[[_,Item]|_Rest].
 
-
-%%trialy2A([],R) :-
-%%	R=[[_,'A']].
-%%trialy2A(List,R) :-
-%%	random_member(A,List),
-%%	R=[[_,A]].
-
 trialy2A([],R) :-
-	R=[].
+	R=[[_,'A']].
 trialy2A(List,R) :-
-	random_member(R,List).
-	%%R=[[_,A]].
-
-%%trialy2A(List,R) :-
-%%	notrace,trialy2B(List,R).%%,trace.
+	notrace,trialy2B(List,R).%%,trace.
 trialy2B(List,R) :-
 	length(List,Length),
 	((Length=<9->

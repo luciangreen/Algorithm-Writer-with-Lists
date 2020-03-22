@@ -21,7 +21,7 @@ Install List Prolog Interpreter Repository (https://github.com/luciangreen/listp
 # Installing and Running Algorithm Writer with Lists with Mind Reader
 
 * Download this repository.
-* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
 ```
 ['algwriter-lists-mr.pl'].
 ```
@@ -36,7 +36,7 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 # Installing and Running Algorithm Writer with Lists at Random
 
 * Download this repository.
-* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
 ```
 ['algwriter-lists-random.pl'].
 ```
@@ -45,30 +45,30 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 # Installing and Running Grammar and Logic to Algorithm
 
 * Download this repository.
-* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
 ```
 ['grammar_logic_to_alg.pl'].
 ```
-* Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the code, NOT the algwriter folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
+* Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Algorithm-Writer-with-Lists"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
 
 # Installing and Running Grammar and Logic to Algorithm at Random
 
 * Download this repository.
-* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
 ```
 ['grammar_logic_to_alg_random.pl'].
 ```
 * As stated above, rather than processing the whole file, this algorithm processes up to 10 random sentences.
-* Enter many sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the code, NOT the algwriter folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
+* Enter many sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Algorithm-Writer-with-Lists"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
 
 # Installing and Running Random Dependencies
 
 * Download this repository.
-* In SWI-Prolog, in the `"algwriter"` folder in the code folder, enter:
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
 ```
 ['random_dependencies.pl'].
 ```

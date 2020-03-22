@@ -1,65 +1,62 @@
 /**
 
-grammar_logic_to_alg.pl
-
-
-e.g. I liked God with you
-[liked,God],[God,you] with extra data
-- connect liked to you with member, return words on path
-
-POS
-
-goes backwards x forwards
-- I v n by v n x ignore
-
-n,v
-- single type
-
-adjective
-- ignored x (ignore names in alg)
-- like v,n
-
-joining words - ignore, just pairs v, n
-- on
-- joins v to n
-- separates vns
-
-negative terms
-- switch to positive or ignore
-
-disappearing words
-- my
-- no list of these, because they are ignored
-
-vv is v1, v2 x v1
-nn is n1
-
-*
-
-later: can randomly generate details like given sentence
+grammar_logic_to_alg_without_brdict.pl
 
 **/
 
-:-include('../la_strings').
-:-include('../texttobrall2').
-:-include('../texttobr2qb').
+:-include('../Text-to-Breasonings/la_strings').
+:-include('../Text-to-Breasonings/texttobrall2').
+:-include('../Text-to-Breasonings/texttobr2qb').
 
 :- dynamic brdict/1.
+:- dynamic brdict_pos/1.
+
+%% given N sentences to generate, takes a sentence and M sentences to find substitution words from
 
 grammar_logic_to_alg1 :-
 	phrase_from_file_s(string(Text1), "../file.txt"),
 
+
 	phrase_from_file_s(string(BrDict0), "../brdict1.txt"),
 	splitfurther(BrDict0,BrDict01),
 	sort(BrDict01,BrDict012),
-	retractall(brdict(_)),
-	assertz(brdict(BrDict012)),
+	retractall(brdict_pos(_)),
+	assertz(brdict_pos(BrDict012)),
 
 	SepandPad=".\n",
 	split_string(Text1,SepandPad,SepandPad,Text2a),
-	delete(Text2a,"",Text2),
+	delete(Text2a,"",Text222),
+
+	random(N1),N2 is round(9*N1)+1,length(N2L,N2),
 	
-	findall(B2,(member(B1,Text2),grammar_logic_to_alg(B1,B2)),C),
+	findall(N3,(member(_,N2L),random_member(N3,Text222)),N4),
+	
+	%%writeln1([n4,N4]),
+	
+%%	append_list(N4,Text2),
+	
+
+	
+	findall(B2,(	random(M1),M2 is round(9*M1)+1,length(M2L,M2),
+	
+
+	%%SepandPad2=" .\n",
+	%%split_string(Text1,SepandPad2,SepandPad2,Text2aa),
+	%%delete(Text2aa,"",M3),
+
+	%%findall(M33,(member(_,M2L),random_member(M33,M3)),M4),
+	M4 = Text222,
+	%%writeln1([m4,M4]),
+	
+	%%append_list(Text2aaa,M5),
+	retractall(brdict(_)),
+	assertz(brdict(M4)),
+
+	member(B1,N4),
+	
+	%%trace,
+	
+	grammar_logic_to_alg(B1,B2)),C),
 	length(C,CLength),
 	writeln([CLength,sentences]),
 	
@@ -106,13 +103,14 @@ grammar_logic_to_alg(Sentence1,B) :- %% Not by multi-sentence algorithms, just b
 	%%write_commands(Length,[],Commands), %% sentence alg
 	
 	generate_sentences(Sentence3,[],Sentence_a,30), %% detail 	sentences
-	append(Sentence3,Sentence_a,Sentence4),
+	append([Sentence3],Sentence_a,Sentence4),
 	findall([*,Sentence1,a_alg(Sentence5),b_alg(Sentence5,a),bb_alg(Sentence6)],(member(Sentence4a,Sentence4),make_lists(Sentence4a,[],Sentence5),Sentence5=[_|Sentence6]),B),!.
 	  %% detail algs
 	
 generate_sentences(_Sentence3,Sentence_a,Sentence_a,0) :- !.
 generate_sentences(Sentence3,Sentence_a1,Sentence_a2,N1) :-
 	random_member(Item,Sentence3),
+	%%trace,
 	generate_sentence(Item,Sentence_a3),
 	append(Sentence_a1,[Sentence_a3],Sentence_a4),
 	N2 is N1-1,
@@ -128,19 +126,19 @@ generate_sentences(Sentence3,Sentence_a1,Sentence_a2,N1) :-
 %%[c,d]
 
 generate_sentence(Item,Sentence) :-
-	random_member(Grammar1,[[n,v,n],[n,v,a,n],[v,n],[v,a,n]]),
-	brdict(BrDict012),
+	random_member(Grammar1,[[n,v,n,n,v,a,n,v,n,v,a,n],[n,v,n],[n,v,a,n],[v,n],[v,a,n]]),
+	brdict_pos(BrDict012),
 	find_pos(Item,POS,BrDict012),
 	substitute1(Item,POS,Grammar1,[],Grammar2),
 	substitute2(Grammar2,BrDict012,[],Sentence).
 
 find_pos(Item,POS2,BrDict012) :-
-	member([Item,POS1],BrDict012),
 	POS1="right",
+	member([Item,POS1],BrDict012),
 	POS2=v,!.
 find_pos(Item,POS2,BrDict012) :-
-	member([Item,POS1],BrDict012),
 	POS1="plus",
+	member([Item,POS1],BrDict012),
 	POS2=a,!.
 find_pos(_Item,POS2,_BrDict012) :-
 	POS2=n.
@@ -161,21 +159,24 @@ substitute2([],_BrDict012,Sentence,Sentence) :- !.
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	Grammar2=n,
-	findall(A,(member([A,"box"],BrDict012)),B),
+	findall(A,(%%brdict(BD),member(A,BD),!,
+	member([A,"box"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
 	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	Grammar2=v,
-	findall(A,(member([A,"right"],BrDict012)),B),
+	findall(A,(%%brdict(BD),member(A,BD),!,
+	member([A,"right"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
 	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	Grammar2=a,
-	findall(A,(member([A,"plus"],BrDict012)),B),
+	findall(A,(%%brdict(BD),member(A,BD),!,
+	member([A,"plus"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
 	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
