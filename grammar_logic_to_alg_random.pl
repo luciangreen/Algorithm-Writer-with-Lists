@@ -1,7 +1,5 @@
 /**
-
 grammar_logic_to_alg_without_brdict.pl
-
 **/
 
 :-include('../listprologinterpreter/la_strings').
@@ -58,7 +56,7 @@ grammar_logic_to_alg1 :-
 	
 	grammar_logic_to_alg(B1,B2)),C),
 	length(C,CLength),
-	writeln([CLength,sentences]),
+	writeln1([CLength,sentences]),
 	
 	C=[[[_,Sentence1,a_alg(List_a),_,bb_alg(List_bb)]|Cs1]|Cs2],
 		%%get_time(TS),stamp_date_time(TS,date(Year,Month,Day,Hour1,Minute1,Seconda,_A,_TZ,_False),local),
@@ -71,18 +69,18 @@ grammar_logic_to_alg1 :-
 	
 	concat_list(["swipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_a3,"]],[[[n,function],[[v,a]],\":-\",[[[n,length],[[v,a],0,1]]]],[[n,function],[[v,a]],\":-\",[[[n,head],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,e],[v,f]]]],[[n,reverse],[[v,a],[],[v,a1]]],[[n,head],[[v,a1],[v,d1]]],[[n,equals1],[[v,d1],[[v,e1],[v,f1]]]],[[n,function2],[[v,a],[v,f],[v,f1]]]]],[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],\":-\",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]],[[n,function2],[[v,a],[v,b],[v,f]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]]]],[[n,function2],[[v,a],[v,b],[v,c]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]],[[n,function2],[[v,d],[v,f],[v,c]]]]],[[n,length],[[],[v,l],[v,l]]],[[n,length],[[v,l],[v,m1],[v,n]],\":-\",[[[n,not],[[[n,=],[[v,l],[]]]]],[[n,tail],[[v,l],[v,t]]],[[n,+],[[v,m1],1,[v,m2]]],[[n,length],[[v,t],[v,m2],[v,n]]]]]],[[]]),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_a1),
 	writeln1([*,Sentence1,a_alg(List_a)]),
-	writeln(List_a1),
+	writeln1(List_a1),
 
 	concat_list(["\n\nswipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_a3,",[v,b]]],[[[n,function],[[v,a],[v,b]],\":-\",[[[n,tail],[[v,a],[v,b]]]]]],_),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_b1),
 	writeln1([*,Sentence1,b_alg(List_a)]),
-	writeln(List_b1),
+	writeln1(List_b1),
 
 	term_to_atom(List_bb,List_bb2),
 	string_atom(List_bb3,List_bb2),
 
 	concat_list(["swipl -G100g -T20g -L2g\n['../listprolog'].\nleash(-all),visible(+all),protocol(",File2,"),trace,interpret(off,[[n,function],[",List_bb3,"]],[[[n,function],[[v,a]],\":-\",[[[n,length],[[v,a],0,1]]]],[[n,function],[[v,a]],\":-\",[[[n,head],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,e],[v,f]]]],[[n,reverse],[[v,a],[],[v,a1]]],[[n,head],[[v,a1],[v,d1]]],[[n,equals1],[[v,d1],[[v,e1],[v,f1]]]],[[n,function2],[[v,a],[v,f],[v,f1]]]]],[[n,reverse],[[],[v,l],[v,l]]],[[n,reverse],[[v,l],[v,m],[v,n]],\":-\",[[[n,head],[[v,l],[v,h]]],[[n,tail],[[v,l],[v,t]]],[[n,wrap],[[v,h],[v,h1]]],[[n,append],[[v,h1],[v,m],[v,o]]],[[n,reverse],[[v,t],[v,o],[v,n]]]]],[[n,function2],[[v,a],[v,b],[v,f]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]]]],[[n,function2],[[v,a],[v,b],[v,c]],\":-\",[[[n,member2],[[v,a],[v,d]]],[[n,equals1],[[v,d],[[v,b],[v,f]]]],[[n,function2],[[v,d],[v,f],[v,c]]]]],[[n,length],[[],[v,l],[v,l]]],[[n,length],[[v,l],[v,m1],[v,n]],\":-\",[[[n,not],[[[n,=],[[v,l],[]]]]],[[n,tail],[[v,l],[v,t]]],[[n,+],[[v,m1],1,[v,m2]]],[[n,length],[[v,t],[v,m2],[v,n]]]]]],[[]]),notrace,noprotocol.\nhalt.\nswipl -G100g -T20g -L2g\n['../meditationnoreplace'].\ntime((N is 3,\nM is 16000,\ntexttobr2(N,",File2,",u,M),texttobr(N,",File2,",u,M))).\n['../texttobr2qb'].\ntexttobr2(3).\nhalt."],List_bb1),
 	writeln1([*,Sentence1,bb_alg(List_bb)]),
-	writeln(List_bb1),
+	writeln1(List_bb1),
 
 	writeln1(Cs1),
 	writeln1(Cs2).
@@ -193,4 +191,5 @@ make_lists(Sentence1,Sentence2,Sentence3) :-
 	Sentence5=[Sentence6|_Sentence7],
 	append(Sentence2,[[Sentence4,Sentence6]],Sentence8),
 	make_lists(Sentence5,Sentence8,Sentence3).
-
+	
+	
