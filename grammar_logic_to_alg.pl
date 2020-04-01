@@ -192,4 +192,5 @@ make_lists(Sentence1,Sentence2,Sentence3) :-
 	Sentence5=[Sentence6|_Sentence7],
 	append(Sentence2,[[Sentence4,Sentence6]],Sentence8),
 	make_lists(Sentence5,Sentence8,Sentence3).
-
+	
+	
