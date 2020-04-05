@@ -17,7 +17,7 @@ combophil(NumberOfPhils) :-
 	split_string(Phil1,SepandPad,SepandPad,Phil2),
 	delete(Phil2,"",Phil3),
 	sort(Phil3,Phil4),
-	length(Phil4,LengthPhil4),write("Number of philosophies in luciansphilosophy.txt: "),
+	length(Phil4,LengthPhil4),write("Number of philosophies in file.txt: "),
 	writeln(LengthPhil4),
 	length(PhilsLengthList,NumberOfPhils),
 	repeat,
