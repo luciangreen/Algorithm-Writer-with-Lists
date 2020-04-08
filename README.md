@@ -38,7 +38,7 @@ Install Text to Breasonings Repository (https://github.com/luciangreen/Text-to-B
 
 follow instructions in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/Instructions_for_Using_texttobr(2).pl.txt">Instructions for Using texttobr(2)</a> when using texttobr, texttobr2 or mind reader to avoid medical problems.
 
-* If necessary, repeat the "arem" mantra all the time while the computation is running to ensure the best results.
+* If necessary, repeat the "arem" mantra all the time while the mind reading computation is running to ensure the best results.
 
 # Installing and Running Algorithm Writer with Lists at Random
 
