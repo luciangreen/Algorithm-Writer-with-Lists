@@ -8,6 +8,7 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * grammar_logic_to_alg_random.pl - like the previous algorithm but randomly selects up to 10 sentences from the file to process.
 * random_dependencies.pl - generates random (meaningless) algorithm specifications.
 * combophil.pl - finds combinations of lines to write philosophies about.
+* combophil_grammar_logic_to_alg1.pl - finds all combinations in lines to write philosophies and does what grammar_logic_to_alg.pl (above) does.
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about Algorithm Writer with Lists.
 
@@ -98,6 +99,16 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 
 * Enter `combophil(2).`
 
+# Installing and Running Combinations of Lines of Philosophy with Grammar and Logic to Algorithm
+
+* Download this repository.
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
+```
+['combophil_grammar_logic_to_alg.pl'].
+```
+* Enter sentences and lines to intermix (warning: takes all combinations of verbs and non verbs in file) and randomly process to give details and algorithms to into `"file.txt"` in the `"Text-to-Breasonings"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
+
+* Enter `combophil_grammar_logic_to_alg1.`
 
 # Authors
 
