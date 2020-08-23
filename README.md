@@ -9,6 +9,7 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * random_dependencies.pl - generates random (meaningless) algorithm specifications.
 * combophil.pl - finds combinations of lines to write philosophies about.
 * combophil_grammar_logic_to_alg.pl - finds all combinations in lines to write philosophies and does what grammar_logic_to_alg.pl (above) does.
+* four_crosses.pl - finds 4 crosses to transition to PhD refinement.
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about Algorithm Writer with Lists.
 
@@ -109,6 +110,16 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 * Enter sentences and lines to intermix (warning: takes all combinations of verbs and non verbs in file) and randomly process to give details and algorithms to into `"file.txt"` in the `"Text-to-Breasonings"` folder.  The output in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `combophil_grammar_logic_to_alg1.`
+
+# Installing and Running Four Crosses
+* Download this repository.
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
+```
+['four_crosses.pl'].
+```
+* Enter four levels of crosses of ideas to make a PhD-level connection.
+
+* Enter `four_crosses.`
 
 # Authors
 
