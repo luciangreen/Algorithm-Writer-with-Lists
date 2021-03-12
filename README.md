@@ -127,6 +127,19 @@ follow instructions in <a href="https://github.com/luciangreen/listprologinterpr
 
 * Enter `four_crosses.`
 
+# grammar_logic_to_alg2.pl
+* Converts files from e.g. grammar_logic_to_alg.pl to simplified algorithms with more specific command names.  Breason out file.txt using <a href="https://github.com/luciangreen/Text-to-Breasonings">Text-to-Breasonings</a>, run grammar_logic_to_alg.pl, run
+grammar_logic_to_alg2.pl, then run <a href="https://github.com/luciangreen/Text-to-Breasonings">Text-to-Breasonings Reading Algorithm</a> on the grammar_logic_to_alg2.pl output.
+* Download this repository.
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
+```
+['grammar_logic_to_alg2.pl'].
+```
+* Enter the number of words in file.txt to replace with computational language (it learns as it goes).
+
+* Enter `grammar_logic_to_alg2(200).`
+
+ 
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
