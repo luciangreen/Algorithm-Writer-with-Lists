@@ -50,15 +50,18 @@ grammar_logic_to_alg2(First_n_words) :-
 	phrase_from_file_s(string(BrDict3), "brdict3.txt"),
 		string_codes(String02ba,BrDict3),
 		atom_to_term(String02ba,Term1,[]),
-	
+
+	/**
 	phrase_from_file_s(string(BrDict4), "first-words.txt"),
 		string_codes(String02b,BrDict4),
 		atom_to_term(String02b,String02a,[]),
+	**/
 	
 	% Finds additions to brdict3.txt (box,values)
-	process_file(String2,Term,Term1,String02a,%[],
-	Additions_to_brdict3,[],Pseudo_algorithms,%[],
-	First_words),
+	process_file(String2,Term,Term1,%String02a,%[],
+	Additions_to_brdict3,[],Pseudo_algorithms%,%[],
+	%First_words
+	),
 	
 	%***append(Term1,Additions_to_brdict3,Additions_to_brdict3_2),
 	
@@ -71,12 +74,14 @@ grammar_logic_to_alg2(First_n_words) :-
 
 	%***append(String02a,First_words,First_words_2),
 	
+	/**
 	term_to_atom(First_words,First_words_2_b),
 	string_atom(First_words_2_c,First_words_2_b),
 
 	(open_s("first-words.txt",write,Stream2),
 	write(Stream2,First_words_2_c),
 	close(Stream2)),!,
+	**/
 	
 	writeln1(Pseudo_algorithms),!,
 	
@@ -84,9 +89,10 @@ grammar_logic_to_alg2(First_n_words) :-
 	writeln1("Summary algorithm:"),
 	writeln1(Summary_algorithm).
 
-	process_file(String2,Term,Term1,String02a,%Additions_to_brdict31,
-	Additions_to_brdict3,Pseudo_algorithms1,Pseudo_algorithms,%First_words1,
-	First_words) :-
+	process_file(String2,Term,Term1,%_String02a,%Additions_to_brdict31,
+	Additions_to_brdict3,Pseudo_algorithms1,Pseudo_algorithms%,First_words1,
+	%First_words
+	) :-
 	%trace,
 	String2=[Word1,Word2|Words],
 	writeln1(["Simplify algorithm",Word1,Word2]),
@@ -94,22 +100,26 @@ grammar_logic_to_alg2(First_n_words) :-
 	Additions_to_brdict31_4),
 	found(Word2,Term,Additions_to_brdict31_4,Item2,%Additions_to_brdict31_4,
 	Additions_to_brdict31_5),	
-	stronger_word([Item1,Word1],[Item2,Word2],String02a,_Word3,String02a,First_words3,Item_a),
+	stronger_word([Item1,Word1],[Item2,Word2],Term,_Word3,%String02a,First_words3,
+	Item_a),
 	append(Pseudo_algorithms1,[Item_a],Pseudo_algorithms2),
-		process_file(Words,Term,Additions_to_brdict31_5,First_words3,%Additions_to_brdict31_5,
-		Additions_to_brdict3,Pseudo_algorithms2,Pseudo_algorithms,%First_words3,
-		First_words).
+		%trace,
+		process_file(Words,Term,Additions_to_brdict31_5,%First_words3,%Additions_to_brdict31_5,
+		Additions_to_brdict3,Pseudo_algorithms2,Pseudo_algorithms%,First_words3,
+		%First_words
+		).
 
-	process_file(_String2,_Term,Term1,String02a,%Additions_to_brdict3,
-	Term1,Pseudo_algorithms,Pseudo_algorithms,%First_words,
-	String02a) :- !.
+	process_file([],_Term,Term1,%String02a,%Additions_to_brdict3,
+	Term1,Pseudo_algorithms,Pseudo_algorithms%,First_words,
+	%String02a
+	) :- !.
 
 
 
 % bd3 - person, subject and
 found(Word1,Term,Additions_to_brdict1,Item1,%Additions_to_brdict1,
 Additions_to_brdict2) :-
-	
+	%trace,
 	%(Word1="june"->trace;true),
 	
 	(member([Word1,Word21],Term)->true;(writeln(["Error:",Word1,"not in brdict1.txt."]),abort)),
@@ -149,15 +159,49 @@ Additions_to_brdict2) :-
 		(string(Input)->(Input=Item1,append(Additions_to_brdict1,[[Word2,Item1]],Additions_to_brdict2))
 )))))).
 	
-stronger_word([Word1,Word1a],[Word2,Word2a],String02a,Word3,First_words1,First_words,Item) :-
-	(member(Word1,String02a)->(First_words1=First_words,Item=[Word1,Word1a,Word2,Word2a]);
+stronger_word([Word1,Word1a],[Word2aa,Word2a],Term,Word3%,First_words1,First_words
+,Item) :-
+	%trace,
+	(member([Word1,Word21],Term)->true;(writeln(["Error:",Word1,"not in brdict1.txt."]),abort)),
+	(Word21=""->Word2=Word1;Word2=Word21),
+	%(member([Word2,Item1],Additions_to_brdict1)->Additions_to_brdict1=Additions_to_brdict2;
+	(%trace,
+	
+	
+	findall(Word3,(member([Word3,Word2],Term)),Word22),
+	append([Word2],Word22,Word23),
+	%trace,
+	sort(Word23,Word241),
+	delete(Word241,"",Word24),
+	
+	length(Word24,Menu_items_length)),
+
+	
+	(member([Word2aa,Word21a],Term)->true;(writeln(["Error:",Word2aa,"not in brdict1.txt."]),abort)),
+	(Word21a=""->Word2ab=Word2aa;Word2ab=Word21a),
+	%(member([Word2aa,Item1a],Additions_to_brdict1)->Additions_to_brdict1=Additions_to_brdict2;
+	(%trace,
+	
+	
+	findall(Word3,(member([Word3,Word2ab],Term)),Word22a),
+	append([Word2ab],Word22a,Word23a),
+	%trace,
+	sort(Word23a,Word241a),
+	delete(Word241a,"",Word24a),
+	
+	length(Word24a,Menu_items_length_a)),
+
+/**(member(Word1,String02a)->(First_words1=First_words,Item=[Word1,Word1a,Word2,Word2a]);
 	(member(Word2,String02a)->(First_words1=First_words,Item=[Word2,Word2a,Word1,Word1a]);
 	(%trace,
 	writeln(["Which of 1-",Word1,"or 2-",Word2,"is stronger?"]),
 	read_string(user_input,"\n","\r",_,Input),
-	(Input="1"->(Word3=Word1,Item=[Word1,Word1a,Word2,Word2a]);
-	(Word3=Word2,Item=[Word2,Word2a,Word1,Word1a])),
-	append(First_words1,[Word3],First_words)))).
+	**/
+	%trace,
+	(Menu_items_length>=Menu_items_length_a->(Word3=Word1,Item=[Word1,Word1a,Word2aa,Word2a]);
+	(Word3=Word2,Item=[Word2aa,Word2a,Word1,Word1a])).
+	%append(First_words1,[Word3],First_words)))).
+	
 	
 	% Append punctuation point to end if necessary.
 	% find last character in file
