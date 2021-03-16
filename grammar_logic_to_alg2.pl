@@ -56,7 +56,7 @@ grammar_logic_to_alg2(First_n_words) :-
 		string_codes(String02b,BrDict4),
 		atom_to_term(String02b,String02a,[]),
 	**/
-	
+	%trace,
 	% Finds additions to brdict3.txt (box,values)
 	process_file(String2,Term,Term1,%String02a,%[],
 	Additions_to_brdict3,[],Pseudo_algorithms%,%[],
@@ -146,7 +146,7 @@ Additions_to_brdict2) :-
 	writeln(Menu2),
 
 	repeat,%trace,
-	concat_list(["Please choose from menu items 1-",Menu_items_length,", or enter a new word:"],Prompt),
+	concat_list(["Please choose from menu items 1-",Menu_items_length,", or enter a new word (letters only, no spaces):"],Prompt),
 	writeln1(Prompt),
 	read_string(user_input,"\n","\r",_,Input),
 	((%trace,
@@ -238,7 +238,7 @@ file0([]) --> [].
 
 %%file([]) --> [].
 file([L|Ls]) --> entry(L),",",
-%%{writeln(L)}, %%***
+%{writeln(L)}, %%***
 file(Ls), !. %% file(Ls),{M=[Ls]})), !. %%, {writeln(["l",L])},",", file(Ls), {writeln(["ls",Ls])},!. %%, {append(L,Ls,M)}, !.	
 file([L]) --> entry(L), 
 %%{writeln(L)},
