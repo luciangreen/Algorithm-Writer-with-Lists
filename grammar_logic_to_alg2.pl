@@ -1,6 +1,6 @@
 /**
 
-?- grammar_logic_to_alg.                                                        ["Simplify algorithm","pia","pear"]
+?- grammar_logic_to_alg2(24).                                                       ["Simplify algorithm","pia","pear"]
 ["What is the word for","person"]
 1	harry
 2	june
