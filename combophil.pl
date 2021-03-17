@@ -12,7 +12,7 @@ list([L|Ls]) --> [L], list(Ls).
 %% e.g. combophil(2). to write on a combination of philosophies
 
 combophil(NumberOfPhils) :-
-	phrase_from_file_s(string(Phil1), "../listprologinterpreter/file.txt"),
+	phrase_from_file_s(string(Phil1), "../Text-to-Breasonings/file.txt"),
 	SepandPad="\n\r",
 	split_string(Phil1,SepandPad,SepandPad,Phil2),
 	delete(Phil2,"",Phil3),
