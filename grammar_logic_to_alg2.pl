@@ -109,7 +109,7 @@ grammar_logic_to_alg2(First_n_words) :-
 		%First_words
 		).
 
-	process_file([],_Term,Term1,%String02a,%Additions_to_brdict3,
+	process_file(_,_Term,Term1,%String02a,%Additions_to_brdict3,
 	Term1,Pseudo_algorithms,Pseudo_algorithms%,First_words,
 	%String02a
 	) :- !.
@@ -119,6 +119,7 @@ grammar_logic_to_alg2(First_n_words) :-
 % bd3 - person, subject and
 found(Word1,Term,Additions_to_brdict1,Item1,%Additions_to_brdict1,
 Additions_to_brdict2) :-
+%(Word1="bot"->trace;true),
 	%trace,
 	%(Word1="june"->trace;true),
 	
