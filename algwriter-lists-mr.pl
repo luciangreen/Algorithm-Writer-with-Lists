@@ -1,9 +1,7 @@
 %% algwriter(A),write1(A).
 %% write data,fns in exec format
 
-:-include('../Text-to-Breasonings/texttobrall2').
-:-include('../Text-to-Breasonings/texttobr2qb').
-:-include('../listprologinterpreter/la_strings').
+:-include('../Text-to-Breasonings/text_to_breasonings.pl').
 
 multiply(A,B,C) :- 
 C is A*B. 
