@@ -41,6 +41,7 @@ later: can randomly generate details like given sentence
 **/
 
 :-include('../Text-to-Breasonings/text_to_breasonings.pl').
+:-include('../Text-to-Breasonings/truncate.pl').
 
 :- dynamic brdict/1.
 
