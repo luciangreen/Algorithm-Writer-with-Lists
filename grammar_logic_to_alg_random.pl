@@ -1,5 +1,7 @@
 /**
+
 grammar_logic_to_alg_without_brdict.pl
+
 **/
 
 :-include('../Text-to-Breasonings/text_to_breasonings.pl').
@@ -10,7 +12,7 @@ grammar_logic_to_alg_without_brdict.pl
 %% given N sentences to generate, takes a sentence and M sentences to find substitution words from
 
 grammar_logic_to_alg1 :-
-	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
+	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/luciansphilosophy.txt"),
 
 
 	phrase_from_file_s(string(BrDict0), "../Text-to-Breasonings/brdict1.txt"),
@@ -23,17 +25,17 @@ grammar_logic_to_alg1 :-
 	split_string(Text1,SepandPad,SepandPad,Text2a),
 	delete(Text2a,"",Text222),
 
-	random(N1),N2 is round(9*N1)+1,length(N2L,N2),
-	
+%%	random(N1),N2 is round(9*N1)+1,length(N2L,N2),
+	N2L=[_],
 	findall(N3,(member(_,N2L),random_member(N3,Text222)),N4),
 	
-	%%writeln1([n4,N4]),
+	%%writeln([n4,N4]),
 	
 %%	append_list(N4,Text2),
 	
 
 	
-	findall(B2,(	random(M1),M2 is round(9*M1)+1,length(M2L,M2),
+	findall(B2,(	%%random(M1),M2 is round(9*M1)+1,length(M2L,M2),
 	
 
 	%%SepandPad2=" .\n",
@@ -42,7 +44,7 @@ grammar_logic_to_alg1 :-
 
 	%%findall(M33,(member(_,M2L),random_member(M33,M3)),M4),
 	M4 = Text222,
-	%%writeln1([m4,M4]),
+	%%writeln([m4,M4]),
 	
 	%%append_list(Text2aaa,M5),
 	retractall(brdict(_)),
@@ -189,5 +191,7 @@ make_lists(Sentence1,Sentence2,Sentence3) :-
 	Sentence5=[Sentence6|_Sentence7],
 	append(Sentence2,[[Sentence4,Sentence6]],Sentence8),
 	make_lists(Sentence5,Sentence8,Sentence3).
-	
-	
+
+writeln1(Term) :-
+	term_to_atom(Term,Atom),
+	writeln(Atom),!.
