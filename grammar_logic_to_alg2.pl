@@ -47,7 +47,7 @@ grammar_logic_to_alg2(First_n_words) :-
 	splitfurther(BrDict0,Term),
 
 %trace,	
-	phrase_from_file_s(string(BrDict3), "brdict3.txt"),
+	phrase_from_file_s(string(BrDict3), "../Algorithm-Writer-with-Lists/brdict3.txt"),
 		string_codes(String02ba,BrDict3),
 		atom_to_term(String02ba,Term1,[]),
 
@@ -68,7 +68,7 @@ grammar_logic_to_alg2(First_n_words) :-
 	term_to_atom(Additions_to_brdict3,String02a_b),
 	string_atom(String02a_c,String02a_b),
 
-	(open_s("brdict3.txt",write,Stream1),
+	(open_s("../Algorithm-Writer-with-Lists/brdict3.txt",write,Stream1),
 	write(Stream1,String02a_c),
 	close(Stream1)),!,
 
