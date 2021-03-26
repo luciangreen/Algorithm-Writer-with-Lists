@@ -117,7 +117,7 @@ grammar_logic_to_alg2(First_n_words) :-
 
 
 % bd3 - person, subject and
-found(Word1,Term,Additions_to_brdict1,Item1,%Additions_to_brdict1,
+found(Word1,Term,Additions_to_brdict1,Word1,%Additions_to_brdict1,
 Additions_to_brdict2) :-
 %(Word1="bot"->trace;true),
 	%trace,
@@ -125,7 +125,10 @@ Additions_to_brdict2) :-
 	
 	(member([Word1,Word21],Term)->true;(writeln(["Error:",Word1,"not in brdict1.txt."]),abort)),
 	(Word21=""->Word2=Word1;Word2=Word21),
-	(member([Word2,Item1],Additions_to_brdict1)->Additions_to_brdict1=Additions_to_brdict2;
+	
+append(Additions_to_brdict1,[[Word2,Word1]],Additions_to_brdict2)
+
+/**	(member([Word2,Item1],Additions_to_brdict1)->Additions_to_brdict1=Additions_to_brdict2;
 	(%trace,
 	
 	
@@ -159,6 +162,8 @@ Additions_to_brdict2) :-
 	append(Additions_to_brdict1,[[Word2,Item1]],Additions_to_brdict2))->true;
 		(string(Input)->(Input=Item1,append(Additions_to_brdict1,[[Word2,Item1]],Additions_to_brdict2))
 )))))).
+**/
+.
 	
 stronger_word([Word1,Word1a],[Word2aa,Word2a],Term,Word3%,First_words1,First_words
 ,Item) :-
