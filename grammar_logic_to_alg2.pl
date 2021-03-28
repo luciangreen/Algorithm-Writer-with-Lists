@@ -117,7 +117,7 @@ grammar_logic_to_alg2(First_n_words) :-
 
 
 % bd3 - person, subject and
-found(Word1,Term,Additions_to_brdict1,Word1,%Additions_to_brdict1,
+found(Word1,Term,Additions_to_brdict1,Word2,%Additions_to_brdict1,
 Additions_to_brdict2) :-
 %(Word1="bot"->trace;true),
 	%trace,
