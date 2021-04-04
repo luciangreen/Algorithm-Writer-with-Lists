@@ -2,6 +2,8 @@
 
 %% Finds combinations of lines of philosophy
 
+%% *** Deprecated by Repository Lucian-Academy/combophil_alg_log.pl
+
 :-include('../listprologinterpreter/la_strings').
 
 string(String) --> list(String).
