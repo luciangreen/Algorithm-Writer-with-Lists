@@ -19,34 +19,37 @@ Please read the following instructions on how to install the project on your com
 
 # Prerequisites
 
-Install List Prolog Interpreter Repository (https://github.com/luciangreen/listprologinterpreter).
+* Please download and install SWI-Prolog for your machine at `https://www.swi-prolog.org/build/`.
 
-Install Text to Breasonings Repository (https://github.com/luciangreen/Text-to-Breasonings).
+# 1. Install manually
 
-# Installation from List Prolog Package Manager (LPPM)
+Download <a href="http://github.com/luciangreen/Algorithm-Writer-with-Lists/">this repository</a>, the <a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter Repository</a> and the <a href="https://github.com/luciangreen/Text-to-Breasonings">Text to Breasonings Repository</a>.
 
-* Optionally, you can install from LPPM by installing <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a> for your machine, downloading the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>,
+# 2. Or Install from List Prolog Package Manager (LPPM)
+
+* Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
+
 ```
 git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
 cd List-Prolog-Package-Manager
 swipl
+['lppm'].
+lppm_install("luciangreen","Algorithm-Writer-with-Lists")
+halt
 ```
-loading LPPM with `['lppm'].` then installing the package by running `lppm_install("luciangreen","Algorithm-Writer-with-Lists").`.
 
-# Installing and Running Algorithm Writer with Lists with Mind Reader
-
-* Download this repository.
-* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
-```
-['algwriter-lists-mr.pl'].
-```
-* Enter `algwriter(Algorithm),writeln1(Algorithm).`
-
-### Caution:
+# Caution:
 
 follow instructions in <a href="https://github.com/luciangreen/listprologinterpreter/blob/master/Instructions_for_Using_texttobr(2).pl.txt">Instructions for Using texttobr(2)</a> when using texttobr, texttobr2 or mind reader to avoid medical problems.
 
-* If necessary, repeat the "arem" mantra all the time while the mind reading computation is running to ensure the best results.
+# Running Algorithm Writer with Lists with Mind Reader
+
+* In Shell:
+`cd Algorithm-Writer-with-Lists`
+`swipl`
+`['algwriter-lists-mr.pl'].`
+
+* Enter `algwriter(Algorithm),writeln1(Algorithm).`
 
 # Installing and Running Algorithm Writer with Lists at Random
 
