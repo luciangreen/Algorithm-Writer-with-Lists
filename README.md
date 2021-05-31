@@ -10,6 +10,7 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * combophil.pl - finds combinations of lines to write philosophies about.
 * combophil_grammar_logic_to_alg.pl - finds all combinations in lines to write philosophies and does what grammar_logic_to_alg.pl (above) does.
 * four_crosses.pl - finds 4 crosses to transition to PhD refinement.
+* combophil2qadb.pl - generates algorithms from dictionary.
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about Algorithm Writer with Lists.
 
@@ -142,7 +143,17 @@ grammar_logic_to_alg2.pl, then run <a href="https://github.com/luciangreen/Text-
 
 * Enter `grammar_logic_to_alg2(200).`
 
- 
+# combophil2qadb.pl
+* Generates algorithms in qadb format from word dictionary.
+* Download this repository.
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
+```
+['combophil2qadb.pl'].
+```
+* Enter `.` or `\n` delimited algorithm ideas in `Text-to-Breasonings/file.txt` and enter:
+`combophil2qadb.`
+* Produces algorithms in `file-o.txt`.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>
