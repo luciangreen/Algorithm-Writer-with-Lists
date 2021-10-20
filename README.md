@@ -1,3 +1,5 @@
+<a href="https://github.com/luciangreen/Essay-Helper">Essay Helper</a> | <a href="https://github.com/luciangreen/Text-to-Breasonings">Text-to-Breasonings (Helps Earn High Distinctions)</a> | <a href="https://github.com/luciangreen/Algorithm-Writer-with-Lists">Grammar Logic (Helps Mind Map Details)</a>
+
 # Algorithm Writer with Lists
 
 Generates random algorithms in List Prolog, which can be converted to a simple form similar to Prolog.
