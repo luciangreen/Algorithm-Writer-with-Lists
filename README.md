@@ -1,4 +1,4 @@
-<a href="https://github.com/luciangreen/Essay-Helper">Essay Helper</a> | <a href="https://github.com/luciangreen/Text-to-Object-Name">Text-to-Object-Name (Helps Earn High Distinctions)</a> | Grammar Logic (Helps Mind Map Details)
+<a href="https://github.com/luciangreen/Essay-Helper">Essay Helper</a> | <a href="https://github.com/luciangreen/Text-to-Breasonings">Text-to-Breasonings (Helps Earn High Distinctions)</a> | Grammar Logic (Helps Mind Map Details)
 
 # Algorithm Writer with Lists
 
