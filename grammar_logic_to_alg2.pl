@@ -20,6 +20,7 @@ true.
 
 **/
 
+%:-include('../listprologinterpreter/la_strings.pl').
 :-include('../listprologinterpreter/la_strings.pl').
 :-include('../listprologinterpreter/la_strings_string.pl').
 :-include('../listprologinterpreter/la_maths.pl').
