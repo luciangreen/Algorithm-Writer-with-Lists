@@ -13,6 +13,7 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * combophil_grammar_logic_to_alg.pl - finds all combinations in lines to write philosophies and does what grammar_logic_to_alg.pl (above) does.
 * four_crosses.pl - finds 4 crosses to transition to PhD refinement.
 * combophil2qadb.pl - generates algorithms from dictionary.
+* mr_alg.pl and ya_phil_to_alg.pl - Yet Another Philosophy to Algorithm and Mind Read Algorithm (randomly produces 5 line algorithms with type checking, possibly about Lucian Academy philosophies).
 
 Please contact Lucian Green at <a href="mailto:luciangreen@lucianacademy.com">luciangreen@lucianacademy.com</a> with questions, comments and feedback about Algorithm Writer with Lists.
 
@@ -155,6 +156,30 @@ grammar_logic_to_alg2.pl, then run <a href="https://github.com/luciangreen/Text-
 * Enter `.` or `\n` delimited algorithm ideas in `Text-to-Breasonings/file.txt` and enter:
 `combophil2qadb.`
 * Produces algorithms in `file-o.txt`.
+
+# Installing and Running Yet Another Philosophy to Algorithm and Mind Read Algorithm
+
+* Download this repository.
+* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
+```
+['ya_phil_to_alg.pl.pl'].
+
+```
+* As stated above, Yet Another Philosophy to Algorithm randomly produces 5 line algorithms with type checking about all sentences in `Lucian-Academy/`.
+
+
+* Enter `ya_phil_to_alg.`
+
+* Produces the file `yet_more_phil_algs.txt`, containing, for example:
+```
+...n,length,list,number,n,round,number,number,n,sqrt,number,number,n,sqrt,number,number,n,round,number,number,n,sqrt,number,number...
+```
+
+* To produce one five-line algorithm, enter `mr_alg(Commands).`, producing:
+
+* `Commands = [[[n,member],[[list],[_3386]]],[[n,member],[[list],[list]]],[[n,intersection],[[list],[list]]],[[n,member],[[list],[_5928]]],[[n,atom_string],[[atom],[string]]],[[n,string_length],[[string],[number]]]]`,
+
+* where this algorithm means, "Take a member (the second item, the first output of member) of a list, take a member list of this list, etc.".
 
 # Authors
 
