@@ -52,6 +52,6 @@ commands([
 [[n,round],[[number],[number]]],
 [[n,string_length],[[string],[number]]],
 [[n,sort],[[list],[_]]],
-[[n,intersection],[[list],[list]]],
+[[n,intersection],[[list,list],[list]]],
 [[n,atom_string],[[atom],[string]]]
 ]).
