@@ -8,7 +8,7 @@ mr_alg(Commands3) :-
  mr_alg(Algorithm_length,Commands,Output1,[],Commands2),
  append([Command1],Commands2,Commands3).
  
-mr_alg(0,_,_,Commands,Commands) :- !.
+mr_alg(1,_,_,Commands,Commands) :- !.
 mr_alg(Algorithm_length1,Commands,Output1,Commands1,Commands2) :-
  findall(Command2,(member(Command2,Commands),
  Command2=[_Name2,[Output1,_Output2]]),Commands3),
