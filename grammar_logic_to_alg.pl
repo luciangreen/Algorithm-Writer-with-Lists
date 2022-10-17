@@ -78,21 +78,21 @@ mt_t2b6:-mt_t2b2.
 mt_t2b :-	concurrent(5,[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6
 ],[]).
 	
-grammar_logic_to_alg1(String,N,Result) :-
+grammar_logic_to_alg1(String1,N,Result) :-
 
 	%term_to_atom(String,Essay_01),
 	%string_atom(Essay_02,Essay_01),
 
 	%working_directory(_, '../'),
 	
-	(open_s("../Text-to-Breasonings/file.txt",write,Stream1),
-	write(Stream1,String),
-	close(Stream1)),!,
+	%(open_s("../Text-to-Breasonings/file.txt",write,Stream1),
+	%write(Stream1,String),
+	%close(Stream1)),!,
 
-	truncate1("../Text-to-Breasonings/file.txt",N,"../Text-to-Breasonings/file.txt"),
+	truncate1(string,String1,N,String),
 
 	%working_directory(_, 'algwriter/'),
-	grammar_logic_to_alg112(Result).
+	grammar_logic_to_alg114(String,Result).
 	
 grammar_logic_to_alg1 :-
 	grammar_logic_to_alg11([Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]),
