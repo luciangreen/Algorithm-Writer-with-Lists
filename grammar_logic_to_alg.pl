@@ -46,6 +46,37 @@ later: can randomly generate details like given sentence
 :- dynamic brdict/1.
 
 
+
+mt_t2b2:-
+%Thread=
+	%[
+	phrase_from_file_s(string(Essay_0), %"lacom5million.txt"
+	"../../private/lacom5million.txt"
+	),
+
+	%Br is 5,
+	%Br is 5000000,
+	W is 0,
+	
+	%grammar_logic_to_alg1(Essay_0,Br,GL_out1),
+	grammar_logic_to_alg113(Essay_0,GL_out1),
+
+	term_to_atom(GL_out1,GL_out2),
+	string_atom(GL_out,GL_out2),
+
+	texttobr2(u,u,GL_out,Br,false,false,false,false,false,false,W),
+	texttobr(u,u,GL_out,Br).%],
+
+mt_t2b3:-mt_t2b2.
+	
+mt_t2b4:-mt_t2b2.	
+
+mt_t2b5:-mt_t2b2.	
+
+mt_t2b6:-mt_t2b2.	
+	%trace,Thread.
+mt_t2b :-	concurrent(2,[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6],[]).
+	
 grammar_logic_to_alg1(String,N,Result) :-
 
 	%term_to_atom(String,Essay_01),
@@ -77,8 +108,17 @@ grammar_logic_to_alg1 :-
 grammar_logic_to_alg112(Result) :-
 	grammar_logic_to_alg11(Result1),term_to_atom(Result1,Result).
 
+grammar_logic_to_alg114(Text,Result) :-
+	grammar_logic_to_alg113(Text,Result1),term_to_atom(Result1,Result).
+
+
 grammar_logic_to_alg11([Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]) :-
 	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
+
+grammar_logic_to_alg113(Text1,[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]).
+
+
+grammar_logic_to_alg113(Text1,[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]) :-
 
 	phrase_from_file_s(string(BrDict0), "../Text-to-Breasonings/brdict1.txt"),
 	splitfurther(BrDict0,BrDict01),
