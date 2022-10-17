@@ -75,7 +75,7 @@ mt_t2b5:-mt_t2b2.
 
 mt_t2b6:-mt_t2b2.	
 	%trace,Thread.
-mt_t2b :-	concurrent(2,[mt_t2b2,mt_t2b3%,mt_t2b4,mt_t2b5,mt_t2b6
+mt_t2b :-	concurrent(5,[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6
 ],[]).
 	
 grammar_logic_to_alg1(String,N,Result) :-
