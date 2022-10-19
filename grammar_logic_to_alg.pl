@@ -82,7 +82,7 @@ Goals=[mt_t2b2,mt_t2b3%,mt_t2b4,mt_t2b5,mt_t2b6
 
 length(Goals,L),
 
-concurrent(L,Goals,[]).
+time(concurrent(L,Goals,[])).
 	
 grammar_logic_to_alg1(String1,N,Result) :-
 
