@@ -51,7 +51,7 @@ mt_t2b2:-
 %Thread=
 	%[
 	phrase_from_file_s(string(Essay_0), %"lacom5million.txt"
-	"../../private/lacom5million.txt"
+	"../../private/lacom0.5million.txt"
 	),
 
 	%Br is 5,
@@ -75,15 +75,17 @@ mt_t2b5:-mt_t2b2.
 
 mt_t2b6:-mt_t2b2.	
 	%trace,Thread.
+	
+
 mt_t2b :-	
 
-Goals=[mt_t2b2,mt_t2b3%,mt_t2b4,mt_t2b5,mt_t2b6
+Goals=[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6
 ],
 
 length(Goals,L),
 
-time(mt_t2b2).
-%time(concurrent(L,Goals,[])).
+%time(mt_t2b2).
+time(concurrent(L,Goals,[])).
 	
 grammar_logic_to_alg1(String1,N,Result) :-
 
