@@ -74,12 +74,18 @@ mt_t2b4:-mt_t2b2.
 mt_t2b5:-mt_t2b2.	
 
 mt_t2b6:-mt_t2b2.	
+
+mt_t2b7:-mt_t2b2.	
+
+mt_t2b8:-mt_t2b2.	
+
+mt_t2b9:-mt_t2b2.	
 	%trace,Thread.
 	
 
 mt_t2b :-	
 
-Goals=[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6
+Goals=[mt_t2b2,mt_t2b3,mt_t2b4,mt_t2b5,mt_t2b6,mt_t2b7,mt_t2b8,mt_t2b9
 ],
 
 length(Goals,L),
