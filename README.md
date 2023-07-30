@@ -181,6 +181,8 @@ grammar_logic_to_alg2.pl, then run <a href="https://github.com/luciangreen/Text-
 
 * where this algorithm means, "Take a member (the second item, the first output of member) of a list, take a member list of this list, etc.".
 
+* Note: member(List,Item) is now member(Item,List) in List Prolog, which is different from the above.
+
 # Authors
 
 Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Lucian Academy</a>

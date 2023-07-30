@@ -48,11 +48,11 @@ writeln("List item 4?"),
 [[n,reverse],[[v,t],[v,o],[v,n]]]]],
 
 [[n,function2],[[v,a],[v,b],[v,f]],":-",
-[[[n,member2],[[v,a],[v,d]]],
+[[[n,member],[[v,d],[v,a]]],
 [[n,equals1],[[v,d],[[v,b],[v,f]]]]]],
 
 [[n,function2],[[v,a],[v,b],[v,c]],":-",
-[[[n,member2],[[v,a],[v,d]]],
+[[[n,member],[[v,d],[v,a]]],
 [[n,equals1],[[v,d],[[v,b],[v,f]]]],
 [[n,function2],[[v,d],[v,f],[v,c]]]]],
 
