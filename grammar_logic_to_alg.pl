@@ -212,6 +212,8 @@ generate_sentence(Item,Sentence) :-
 	substitute1(Item,POS,Grammar1,[],Grammar2),
 	substitute2(Grammar2,BrDict012,[],Sentence).
 
+find_pos("right",v,_) :- !.
+find_pos("plus",a,_) :- !.
 find_pos(Item,POS2,BrDict012) :-
 	member([Item,POS1],BrDict012),
 	POS1="right",
