@@ -42,7 +42,7 @@ later: can randomly generate details like given sentence
 
 :-include('../Text-to-Breasonings/text_to_breasonings.pl').
 :-include('../Text-to-Breasonings/truncate.pl').
-:- include('../Philosophy/14 10 23.pl').
+%:- include('../Philosophy/14 10 23.pl').
 
 :- dynamic brdict/1.
 
@@ -173,13 +173,12 @@ grammar_logic_to_alg(Sentence1,B) :- %% Not by multi-sentence algorithms, just b
 	atom_string(Sentence0,Sentence1),
 	downcase_atom(Sentence0,Sentence01),
 	atom_string(Sentence01,Sentence02),
-	%SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
+	SepandPad="&#@~%`$?-+*^,()|.:;=_/[]<>{}\n\r\s\t\\\"!'0123456789",
 	
 	Connectors=
 		["the","a","i","on","with","of","an","for","to",
 		"was","were","and","in","my","from","out","by"],
-	%split_string
-	split_on_non_alpha(Sentence02,Sentence2),
+	split_string(Sentence02,SepandPad,SepandPad,Sentence2),
 	subtract(Sentence2,Connectors,Sentence3),
 	%%length(Sentence3,Length),
 	
