@@ -41,7 +41,8 @@ cd List-Prolog-Package-Manager
 swipl
 ['lppm'].
 lppm_install("luciangreen","Algorithm-Writer-with-Lists").
-halt
+../
+halt.
 ```
 
 # Caution:
