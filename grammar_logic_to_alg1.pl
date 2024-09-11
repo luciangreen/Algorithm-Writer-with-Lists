@@ -178,13 +178,13 @@ grammar_logic_to_alg(Sentence1,B) :- %% Not by multi-sentence algorithms, just b
 		["the","a","i","on","with","of","an","for","to",
 		"was","were","and","in","my","from","out","by"],
 	split_string(Sentence02,SepandPad,SepandPad,Sentence2),
-	subtract(Sentence2,Connectors,Sentence3),
+	%subtract(Sentence2,Connectors,Sentence3),
 	%%length(Sentence3,Length),
 	
 	%% () add generated data
 	%%write_commands(Length,[],Commands), %% sentence alg
 	
-	generate_sentences(Sentence3,[],Sentence_a,30), %% detail 	sentences
+	generate_sentences(Sentence2,[],Sentence_a,30), %% detail 	sentences
 	append(Sentence3,Sentence_a,Sentence4),
 	findall([*,Sentence1,a_alg(Sentence5),b_alg(Sentence5,a),bb_alg(Sentence6)],(member(Sentence4a,Sentence4),make_lists(Sentence4a,[],Sentence5),Sentence5=[_|Sentence6]),B),!.
 	  %% detail algs
