@@ -122,13 +122,13 @@ grammar_logic_to_alg1 :-
 
 	%writeln1(Cs1),
 	%writeln1(Cs2)
-	writeln(S).
+	writeln(S),!.
 
 grammar_logic_to_alg112(Result) :-
-	grammar_logic_to_alg11(Result1),term_to_atom(Result1,Result).
+	grammar_logic_to_alg11(Result1),term_to_atom(Result1,Result),!.
 
 grammar_logic_to_alg114(Text,Result) :-
-	grammar_logic_to_alg113(Text,Result1),term_to_atom(Result1,Result).
+	grammar_logic_to_alg113(Text,Result1),term_to_atom(Result1,Result),!.
 
 
 grammar_logic_to_alg11(S%[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]
@@ -136,7 +136,7 @@ grammar_logic_to_alg11(S%[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,
 	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
 
 grammar_logic_to_alg113(Text1,S%[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]
-).
+),!.
 
 
 grammar_logic_to_alg113(Text1,S%[Sentence1,List_a,List_a1,List_b1,List_bb,List_bb1,Cs1,Cs2]
