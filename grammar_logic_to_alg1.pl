@@ -206,7 +206,7 @@ generate_sentence(Item,Sentence) :-
 	brdict(BrDict012),
 	find_pos(Item,POS,BrDict012),
 	substitute1(Item,POS,Grammar1,[],Grammar2),
-	substitute2(Grammar2,BrDict012,[],Sentence),!.
+	substitute2(Grammar2,BrDict012,[],Sentence).
 
 find_pos("right",v,_) :- !.
 find_pos("plus",a,_) :- !.
@@ -219,7 +219,7 @@ find_pos(Item,POS2,BrDict012) :-
 	POS1="plus",
 	POS2=a,!.
 find_pos(_Item,POS2,_BrDict012) :-
-	POS2=n,!.
+	POS2=n.
 
 substitute1(_Item,_POS,[],Grammar,Grammar) :- !.
 substitute1(Item,POS,Grammar1,Grammar2,Grammar3) :-
@@ -240,25 +240,25 @@ substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	findall(A,(member([A,"box"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
-	substitute2(Grammar3,BrDict012,Sentence3,Sentence2),!.
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	Grammar2=v,
 	findall(A,(member([A,"right"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
-	substitute2(Grammar3,BrDict012,Sentence3,Sentence2),!.
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	Grammar2=a,
 	findall(A,(member([A,"plus"],BrDict012)),B),
 	random_member(Word,B),
 	append(Sentence1,[Word],Sentence3),
-	substitute2(Grammar3,BrDict012,Sentence3,Sentence2),!.
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 substitute2(Grammar1,BrDict012,Sentence1,Sentence2) :-
 	Grammar1=[Grammar2|Grammar3],
 	append(Sentence1,[Grammar2],Sentence3),
-	substitute2(Grammar3,BrDict012,Sentence3,Sentence2),!.
+	substitute2(Grammar3,BrDict012,Sentence3,Sentence2).
 
 make_lists(Sentence1,Sentence,Sentence) :-
 	Sentence1=[_Sentence2],
@@ -267,5 +267,5 @@ make_lists(Sentence1,Sentence2,Sentence3) :-
 	Sentence1=[Sentence4|Sentence5],
 	Sentence5=[Sentence6|_Sentence7],
 	append(Sentence2,[[Sentence4,Sentence6]],Sentence8),
-	make_lists(Sentence5,Sentence8,Sentence3),!.
+	make_lists(Sentence5,Sentence8,Sentence3).
 
