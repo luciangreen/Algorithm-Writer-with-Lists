@@ -33,11 +33,13 @@ grammar_logic_to_alg113(Text1,S) :-
 	split_string_on_non_alpha(Text1,Text2a),
 
 	length(Text2a,L),
-	numbers(L,1,[],Ns),
+	L1 is L*79,
+	numbers(L1,1,[],Ns),
 	
 	maplist(random_word(BrDict012),Ns,C),
+	append(Text2a,C,C1),
 	
-	term_to_atom(C,S),!.
+	term_to_atom(C1,S),!.
 	
 random_word(BrDict012,_,S) :-
 	random_member([S,_],BrDict012),!.
