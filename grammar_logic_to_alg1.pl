@@ -39,7 +39,8 @@ grammar_logic_to_alg113(Text1,S) :-
 	maplist(random_word(BrDict012),Ns,C),
 	append(Text2a,C,C1),
 	
-	term_to_atom(C1,S),!.
+	term_to_atom(C1,A),
+	atom_string(A,S),!.
 	
 random_word(BrDict012,_,S) :-
 	random_member([S,_],BrDict012),!.
