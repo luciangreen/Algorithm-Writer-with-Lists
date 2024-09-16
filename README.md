@@ -7,7 +7,6 @@ Generates random algorithms in List Prolog, which can be converted to a simple f
 * algwriter-lists-mr.pl - generates algorithms with combinations of other algorithms with vague mind reading
 * algwriter-lists-random.pl - generates algorithms with combinations of other algorithms at random
 * grammar_logic_to_alg.pl - takes text, randomly generates details and appropriate algorithms for A (agreement), B (disagreement) and solution to B based on approximate parts of speech and the Text to Breasonings dictionary.
-* grammar_logic_to_alg_random.pl - like the previous algorithm but randomly selects up to 10 sentences from the file to process.
 * random_dependencies.pl - generates random (meaningless) algorithm specifications.
 * combophil.pl - finds combinations of lines to write philosophies about.
 * combophil_grammar_logic_to_alg.pl - finds all combinations in lines to write philosophies and does what grammar_logic_to_alg.pl (above) does.
@@ -75,18 +74,6 @@ follow instructions in <a href="https://github.com/luciangreen/Text-to-Breasonin
 ['grammar_logic_to_alg.pl'].
 ```
 * Enter sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Text-to-Breasonings"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
-
-* Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
-
-# Installing and Running Grammar and Logic to Algorithm at Random
-
-* Download this repository.
-* In SWI-Prolog, in the `"Algorithm-Writer-with-Lists"` folder, enter:
-```
-['grammar_logic_to_alg_random.pl'].
-```
-* As stated above, rather than processing the whole file, this algorithm processes up to 10 random sentences.
-* Enter many sentences and lines to randomly process to give details and algorithms to into `"file.txt"` in the `"Algorithm-Writer-with-Lists"` folder.  The output or the `gla.txt` file, depending on whether you run using (1) or (2) in the following will contain the sentences and algorithms with instructions about how to run them.
 
 * Enter `grammar_logic_to_alg1.` (1) or paste the contents of `grammar_logic_to_alg_sh.txt` into the Terminal window on Mac (2).
 
