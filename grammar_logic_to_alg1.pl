@@ -1,14 +1,20 @@
+:- (load_files(['../listprologinterpreter/listprolog.pl'],[if(changed),if(not_loaded)])).
 :-include('../Text-to-Breasonings/truncate.pl').
 :-dynamic brdict/1.
 :-dynamic words_for_sent/1.
 
 grammar_logic_to_alg1(String1,N,Result) :-
+	container(grammar_logic_to_alg1_contents(String1,N,Result)),!.
+grammar_logic_to_alg1 :-
+	container(grammar_logic_to_alg1_contents),!.
+	
+grammar_logic_to_alg1_contents(String1,N,Result) :-
 
 	truncate1(string,String1,N,String),
 
 	grammar_logic_to_alg114(String,Result).
 	
-grammar_logic_to_alg1 :-
+grammar_logic_to_alg1_contents :-
 	grammar_logic_to_alg11(S),
 	writeln(S),!.
 
@@ -20,7 +26,6 @@ grammar_logic_to_alg11(S) :-
 	phrase_from_file_s(string(Text1), "../Text-to-Breasonings/file.txt"),
 
 grammar_logic_to_alg113(Text1,S),!.
-
 
 grammar_logic_to_alg113(Text1,S) :-
 
