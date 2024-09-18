@@ -4,7 +4,7 @@
 
 %% *** Deprecated by Repository Lucian-Academy/combophil_alg_log.pl
 
-:-include('../listprologinterpreter/la_strings').
+:-include('../listprologinterpreter/la_strings.pl').
 
 string(String) --> list(String).
 

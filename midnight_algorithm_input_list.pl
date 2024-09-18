@@ -1,4 +1,4 @@
-:-include('../listprologinterpreter/la_strings').
+:-include('../listprologinterpreter/la_strings.pl').
 
 
 midnight_algorithm_input_list :-

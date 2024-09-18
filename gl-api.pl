@@ -8,7 +8,7 @@
 :- http_handler('/', web_form, []).
 
 % GitHub
-:- include('grammar_logic_to_alg.pl').
+:-include('grammar_logic_to_alg.pl').
 
 server(Port) :-
         http_server(http_dispatch, [port(Port)]).

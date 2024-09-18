@@ -1,4 +1,4 @@
-:- (load_files(['../listprologinterpreter/listprolog.pl'],[if(changed),if(not_loaded)])).
+:-include('../listprologinterpreter/listprolog.pl').
 :-include('../Text-to-Breasonings/truncate.pl').
 :-dynamic brdict/1.
 :-dynamic words_for_sent/1.
