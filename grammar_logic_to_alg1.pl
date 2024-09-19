@@ -1,4 +1,4 @@
-:-include('../listprologinterpreter/listprolog.pl').
+%:-include('../listprologinterpreter/listprolog.pl').
 :-include('../Text-to-Breasonings/truncate.pl').
 :-dynamic brdict/1.
 :-dynamic words_for_sent/1.
