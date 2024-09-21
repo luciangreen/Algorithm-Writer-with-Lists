@@ -4,9 +4,9 @@
 :-dynamic words_for_sent/1.
 
 grammar_logic_to_alg1(String1,N,Result) :-
-	container(grammar_logic_to_alg1_contents(String1,N,Result)),!.
+	container1(grammar_logic_to_alg1_contents(String1,N,Result)),!.
 grammar_logic_to_alg1 :-
-	container(grammar_logic_to_alg1_contents),!.
+	container1(grammar_logic_to_alg1_contents),!.
 	
 grammar_logic_to_alg1_contents(String1,N,Result) :-
 
