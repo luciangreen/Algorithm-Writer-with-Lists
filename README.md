@@ -24,26 +24,6 @@ Please read the following instructions on how to install the project on your com
 
 * Use a search engine to find the Homebrew (or other) Terminal install command for your platform and install it, and search for the Terminal command to install swipl using Homebrew and install it or download and install SWI-Prolog for your machine at <a href="https://www.swi-prolog.org/build/">SWI-Prolog</a>.
 
-# 1. Install manually
-
-Download <a href="http://github.com/luciangreen/Algorithm-Writer-with-Lists/">this repository</a>, the <a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter Repository</a> and the <a href="https://github.com/luciangreen/Text-to-Breasonings">Text to Breasonings Repository</a>.
-
-# 2. Or Install from List Prolog Package Manager (LPPM)
-
-* Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
-
-```
-mkdir GitHub
-cd GitHub/
-git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
-cd List-Prolog-Package-Manager
-swipl
-['lppm'].
-lppm_install("luciangreen","Algorithm-Writer-with-Lists").
-../
-halt.
-```
-
 # Mac, Linux and Windows (with Linux commands installed): Prepare to run swipl
 
 * In Terminal settings (Mac), make Bash the default shell:
@@ -68,6 +48,26 @@ export PATH="$PATH:/opt/homebrew/bin/"
 
 ```
 sudo ln -s /opt/homebrew/bin/swipl /usr/local/bin/swipl
+```
+
+# 1. Install manually
+
+Download <a href="http://github.com/luciangreen/Algorithm-Writer-with-Lists/">this repository</a>, the <a href="https://github.com/luciangreen/listprologinterpreter">List Prolog Interpreter Repository</a> and the <a href="https://github.com/luciangreen/Text-to-Breasonings">Text to Breasonings Repository</a>.
+
+# 2. Or Install from List Prolog Package Manager (LPPM)
+
+* Download the <a href="https://github.com/luciangreen/List-Prolog-Package-Manager">LPPM Repository</a>:
+
+```
+mkdir GitHub
+cd GitHub/
+git clone https://github.com/luciangreen/List-Prolog-Package-Manager.git
+cd List-Prolog-Package-Manager
+swipl
+['lppm'].
+lppm_install("luciangreen","Algorithm-Writer-with-Lists").
+../
+halt.
 ```
 
 # Caution:
