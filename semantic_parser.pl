@@ -1,5 +1,8 @@
 :- use_module(library(lists)).
 
+% ConceptNet facts, if a loader has read any (see csv_loader.pl, pure_loader.pl).
+:- dynamic concept_property/3.
+
 % =============================================================================
 % 1. KNOWLEDGE BASE & TAXONOMY (The Facts)
 % =============================================================================
@@ -42,9 +45,18 @@ property(organic_matter, [food_type(vegetation)]).
 property(liquid, [food_type(liquid)]).
 
 % Inherited Property Lookup
+% An unconstrained slot (a variable) accepts anything.
+has_property(_, Constraint) :-
+    var(Constraint), !.
+% A word has a property if it, or anything it is a kind of, lists it.
+has_property(Word, Property) :-
+    (Word = Parent ; ancestor(Word, Parent)),
+    property(Parent, Properties),
+    memberchk(Property, Properties), !.
+% Anything ConceptNet says is capable of an action counts as animate.
 has_property(Word, actor_type(animate)) :-
-    (ancestor(Word, Parent) ; Word = Parent),
-    concept_property(Parent, 'CapableOf', _). % Anything capable of executing actions
+    (Word = Parent ; ancestor(Word, Parent)),
+    concept_property(Parent, 'CapableOf', _), !.
 
 % Verb Semantic Constraints (What verbs demand from Subjects and Objects)
 % Verb, Subject Requirement, Object Requirement
@@ -78,32 +90,32 @@ validate_semantics(svo(Subj, Verb, Obj)) :-
 % 4. CORRECTION & SUGGESTION ENGINE
 % =============================================================================
 
-% Propose a fix for a broken sentence by swapping parts out matching constraints
+% Propose a fix for a broken sentence: the fewest changed words (subject,
+% object or verb first, then two of them) that give a sentence which itself
+% passes validate_semantics/1, so a suggestion is never also wrong.
 suggest_correction(svo(Subj, Verb, Obj), ReplacedPart, Suggestion) :-
-    verb_constraint(Verb, SubjConstraint, ObjConstraint),
-    (   \+ has_property(Subj, SubjConstraint) ->
-        % Subject is wrong; find a noun that fits the verb's subject rule
-        word_type(ValidSubj, noun),
-        ValidSubj \= Subj,
-        has_property(ValidSubj, SubjConstraint),
-        ReplacedPart = subject(Subj),
-        Suggestion = svo(ValidSubj, Verb, Obj)
-    ;   \+ has_property(Obj, ObjConstraint) ->
-        % Object is wrong; find a noun that fits the verb's object rule
-        word_type(ValidObj, noun),
-        ValidObj \= Obj,
-        has_property(ValidObj, ObjConstraint),
-        ReplacedPart = object(Obj),
-        Suggestion = svo(Subj, Verb, ValidObj)
-    ;   % If both nouns are fine but the verb is wrong, find a matching verb
-        word_type(ValidVerb, verb),
-        ValidVerb \= Verb,
-        verb_constraint(ValidVerb, SubjConstraint, ObjConstraint),
-        has_property(Subj, SubjConstraint),
-        has_property(Obj, ObjConstraint),
-        ReplacedPart = verb(Verb),
-        Suggestion = svo(Subj, ValidVerb, Obj)
-    ).
+    (   candidate_fix(svo(Subj, Verb, Obj), 1, ReplacedPart, Suggestion)
+    ;   candidate_fix(svo(Subj, Verb, Obj), 2, ReplacedPart, Suggestion)
+    ),
+    Suggestion = svo(SS, _, SO), SS \== SO,
+    validate_semantics(Suggestion),
+    !.
+
+candidate_fix(svo(S, V, O), 1, subject(S), svo(S2, V, O)) :-
+    word_type(S2, noun), S2 \== S.
+candidate_fix(svo(S, V, O), 1, object(O), svo(S, V, O2)) :-
+    word_type(O2, noun), O2 \== O.
+candidate_fix(svo(S, V, O), 1, verb(V), svo(S, V2, O)) :-
+    word_type(V2, verb), V2 \== V.
+candidate_fix(svo(S, V, O), 2, [subject(S), object(O)], svo(S2, V, O2)) :-
+    word_type(S2, noun), S2 \== S,
+    word_type(O2, noun), O2 \== O.
+candidate_fix(svo(S, V, O), 2, [subject(S), verb(V)], svo(S2, V2, O)) :-
+    word_type(S2, noun), S2 \== S,
+    word_type(V2, verb), V2 \== V.
+candidate_fix(svo(S, V, O), 2, [verb(V), object(O)], svo(S, V2, O2)) :-
+    word_type(V2, verb), V2 \== V,
+    word_type(O2, noun), O2 \== O.
 
 % =============================================================================
 % 5. MAIN ENTRY POINT (User Interface)
