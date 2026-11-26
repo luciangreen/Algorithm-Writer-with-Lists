@@ -219,3 +219,14 @@ Lucian Green - Initial programmer - <a href="https://www.lucianacademy.com/">Luc
 
 I licensed this project under the BSD3 License - see the <a href="LICENSE">LICENSE.md</a> file for details
 
+
+## Sentence checker
+
+`semantic_parser.pl` checks simple subject-verb-object sentences against
+facts. A word has a property if it, or anything it is a kind of, lists it in
+`property/2`, so "The cow eats the grass." makes sense (a cow is a living
+thing, so animate; grass is vegetation, organic matter, so food). ConceptNet
+facts loaded by `csv_loader.pl` or `pure_loader.pl` add to this but are not
+needed. A suggested correction changes as few words as possible and is
+checked itself before it is offered. Run the tests with
+`swipl -g "run_tests, halt" tests/test_semantic_parser.pl`.
